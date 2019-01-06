@@ -22,3 +22,4 @@
             {{Form::submit('Submit', ['class' => 'btn btn-outline-success btn-sm'])}}
     {!! Form::close() !!}
 @endsection
+
