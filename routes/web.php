@@ -31,11 +31,11 @@ Route::get('/services', 'PagesController@services');
 
 Route::resource('posts','PostsController');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('verified');
 
-// Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+// Route::get('/home', 'HomeController@index')->name('dashboard')->middleware('verified');
 
 // Route::resource('admin/posts', 'Admin\\PostsController');
 
