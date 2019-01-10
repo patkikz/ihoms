@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\Events\PostCreated;
 use DB;
+use Alert;
 
 class PostsController extends Controller
 {
@@ -34,7 +35,7 @@ class PostsController extends Controller
 
         $posts = Post::orderBy('created_at','desc')->paginate(4);
 
-        
+     
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -101,6 +102,7 @@ class PostsController extends Controller
         $post->save();
 
         event(new PostCreated($post));  
+        
 
         return redirect('/posts')->with('success', 'Post Created');
     }

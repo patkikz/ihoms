@@ -14,9 +14,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->string('title')->nullable();
             $table->mediumText('content')->nullable();
             $table->timestamps();
+            $table->softDeletes();
             });
     }
 
@@ -28,5 +30,9 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::drop('posts');
+
+        $table->dropForeign('lists_user_id_foreign');
+        $table->dropIndex('lists_user_id_index');
+        $table->dropColumn('user_id');
     }
 }
