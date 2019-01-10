@@ -30,8 +30,10 @@ Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 
 Route::resource('posts','PostsController');
+Route::resource('tenants','TenantsController');
 
-Auth::routes(['verify' => true]);
+
+Auth::routes(['verify' => true, 'register' => false]);
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('verified');
 

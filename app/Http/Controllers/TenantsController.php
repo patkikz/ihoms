@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tenant;
 use Illuminate\Http\Request;
+use Alert;
 
 class TenantsController extends Controller
 {
@@ -14,7 +15,9 @@ class TenantsController extends Controller
      */
     public function index()
     {
-        //
+        $tenants = Tenant::all();
+
+        return view('tenants.index')->with('tenants', $tenants);
     }
 
     /**
@@ -24,7 +27,7 @@ class TenantsController extends Controller
      */
     public function create()
     {
-        //
+        return view('tenants.create');
     }
 
     /**
@@ -35,7 +38,20 @@ class TenantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Tenant::create($request->validate(
+            [
+                'last_name' => 'required',
+                'first_name' => 'required',
+                'middle_name' => 'required',
+                'birth_place' => 'required',
+                'block' => 'required',
+                'lot' => 'required',
+                'street' => 'required',
+            ]));
+
+        // Tenant::create($validated);
+
+        return redirect('/tenants');
     }
 
     /**
@@ -46,7 +62,7 @@ class TenantsController extends Controller
      */
     public function show(Tenant $tenant)
     {
-        //
+        return view('tenants.show', compact('tenant'));
     }
 
     /**
@@ -57,7 +73,7 @@ class TenantsController extends Controller
      */
     public function edit(Tenant $tenant)
     {
-        //
+        return view('tenants.edit', compact('tenant'));
     }
 
     /**
@@ -67,9 +83,20 @@ class TenantsController extends Controller
      * @param  \App\Tenant  $tenant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tenant $tenant)
+    public function update(Request $request ,Tenant $tenant)
     {
-        //
+        Tenant::updated($request->validate(
+            [
+                'last_name' => 'required',
+                'first_name' => 'required',
+                'middle_name' => 'required',
+                'birth_place' => 'required',
+                'block' => 'required',
+                'lot' => 'required',
+                'street' => 'required',
+            ]));
+
+        return redirect('/tenants')->with('success','Tenant Updated');
     }
 
     /**
@@ -80,6 +107,9 @@ class TenantsController extends Controller
      */
     public function destroy(Tenant $tenant)
     {
-        //
+        
+        $tenant->delete();
+
+        return redirect('/tenants')->with('success', 'Tenant Removed');
     }
 }
