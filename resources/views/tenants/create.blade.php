@@ -2,7 +2,7 @@
 
 @section('content')
     Create Something
-    {!! Form::open(['action' => 'TenantsController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'class' => 'box']) !!}
+    {!! Form::open(['action' => 'TenantsController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'class' => 'well']) !!}
             
     <div class="form-group">
         {{Form::label('last_name', 'Last Name')}}

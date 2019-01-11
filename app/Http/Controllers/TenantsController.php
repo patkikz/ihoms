@@ -51,7 +51,7 @@ class TenantsController extends Controller
 
         // Tenant::create($validated);
 
-        return redirect('/tenants');
+        return redirect('/tenants')->with('success', 'Tenant Created Successfully');
     }
 
     /**

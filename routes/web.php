@@ -33,7 +33,7 @@ Route::resource('posts','PostsController');
 Route::resource('tenants','TenantsController');
 
 
-Auth::routes(['verify' => true, 'register' => false]);
+Auth::routes(['verify' => true]);
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('verified');
 
