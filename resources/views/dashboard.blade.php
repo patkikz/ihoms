@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard
+                <div class="card-header">Dashboard{!! auth()->user()->isAdmin == 1 ? ' - Admin' : ' - User' !!}
                         <a href="/posts/create" class="btn btn-outline-primary float-right">Create Post</a>
                 </div>
 

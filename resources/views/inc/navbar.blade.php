@@ -58,12 +58,20 @@
                       @else
                           <li class="nav-item dropdown">
                               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                  {{ Auth::user()->name }} <span class="caret"></span>
+                                  {{ Auth::user()->name }}  {{Auth::user()->isAdmin == 1 ? '(Admin)' : ''}} <span class="caret"></span>
                               </a>
 
                               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a href="/dashboard" class="dropdown-item">Dashboard</a>
-                                  <a href="/tenants" class="dropdown-item">HO Masterfile</a>
+                                 @can('isAdmin')
+                                    <a href="/dashboard" class="dropdown-item">Dashboard</a>
+                                    <a href="/tenants" class="dropdown-item">HO Masterfile</a>     
+                                 @endcan  
+                                
+                                @can('isUser')
+                                    <a href="/dashboard" class="dropdown-item">Dashboard</a>    
+                                @endcan
+                                
+                                  
                                   <a class="dropdown-item" href="{{ route('logout') }}"
                                      onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
