@@ -8,6 +8,10 @@ use Alert;
 
 class TenantsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,7 @@ class TenantsController extends Controller
      */
     public function index()
     {
-        $tenants = Tenant::all();
+        $tenants = Tenant::where('user_id', auth()->id())->get();
 
         return view('tenants.index')->with('tenants', $tenants);
     }
@@ -38,7 +42,9 @@ class TenantsController extends Controller
      */
     public function store(Request $request)
     {
-      Tenant::create($request->validate(
+    
+        
+        $request = request()->validate(
             [
                 'last_name' => 'required',
                 'first_name' => 'required',
@@ -47,10 +53,11 @@ class TenantsController extends Controller
                 'block' => 'required',
                 'lot' => 'required',
                 'street' => 'required',
-            ]));
-
-        // Tenant::create($validated);
-
+            ]);
+        
+        $request['user_id'] = auth()->id();
+                
+        Tenant::create($request);
         return redirect('/tenants')->with('success', 'Tenant Created Successfully');
     }
 
@@ -73,6 +80,11 @@ class TenantsController extends Controller
      */
     public function edit(Tenant $tenant)
     {
+        if(auth()->user()->id !== $tenant->user_id)
+        {
+            return redirect('/tenants')->with('error', 'Unauthorized Page');    
+        }
+
         return view('tenants.edit', compact('tenant'));
     }
 
@@ -85,7 +97,7 @@ class TenantsController extends Controller
      */
     public function update(Request $request ,Tenant $tenant)
     {
-        Tenant::updated($request->validate(
+        $tenant->update($request->validate(
             [
                 'last_name' => 'required',
                 'first_name' => 'required',

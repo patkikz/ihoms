@@ -64,7 +64,9 @@
                               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                  @can('isAdmin')
                                     <a href="/dashboard" class="dropdown-item">Dashboard</a>
-                                    <a href="/tenants" class="dropdown-item">HO Masterfile</a>     
+                                    <a href="/tenants" class="dropdown-item">HO Masterfile</a>
+                                    <a href="/expenses" class="dropdown-item">Expenses</a>
+                                    <a href="/purposes" class="dropdown-item">Purposes</a>
                                  @endcan  
                                 
                                 @can('isUser')

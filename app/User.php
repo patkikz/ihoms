@@ -10,6 +10,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
+    public $timestamps = true;
     /**
      * The attributes that are mass assignable.
      *
@@ -32,5 +33,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class);
     }
 }
