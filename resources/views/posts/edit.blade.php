@@ -19,7 +19,7 @@
 
             {{Form::hidden('_method', 'PUT')}}
 
-            {{Form::submit('Submit', ['class' => 'btn btn-outline-success btn-sm'])}}
+            {{Form::submit('Submit', ['class' => 'btn btn-success btn-sm'])}}
     {!! Form::close() !!}
 @endsection
 

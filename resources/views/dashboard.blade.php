@@ -56,17 +56,17 @@
                     </div> --}}
                 </div>
 
-                <div class="col-xl-6 col-lg-6 my-5">
+                <div class="col-xl-6 col-lg-6 my-4">
                     <div class="au-card au-card-padding rounded border-0">
                         <div id="chartContainer" style="height: 400px; width: 100%;"></div>
                         
                     </div>
                 </div>
 
-                <div class="col-xl-6 col-lg-6 my-5">
+                <div class="col-xl-6 col-lg-6 my-4">
                     <div class="au-card au-card-padding rounded border-0">
                         <div>Dashboard{!! auth()->user()->isAdmin == 1 ? ' - Admin' : ' - User' !!}
-                            <a href="/posts/create" class="btn btn-outline-primary float-right">Create Post</a>
+                            <a href="/posts/create" class="btn btn-primary float-right">Create Post</a>
                         </div>
         
                         <div class="card-body">
@@ -81,22 +81,22 @@
                             <table class="table table-striped table-sm">
                                 <tr>
                                     <th>Title</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th colspan="2">Action</th>
+                                    
                                 </tr>
                                 @foreach ($posts as $post)
                                     <tr>
-                                    <th>{{$post->title}}</th>
-                                    <th><a href="/posts/{{$post->id}}/edit" class="btn btn-outline-dark btn-sm">Edit</a></th>
-                                    <th>
+                                    <td>{{$post->title}}</td>
+                                    <td><a href="/posts/{{$post->id}}/edit" class="btn btn-dark btn-sm">Edit</a></td>
+                                    <td>
                                             {!!Form::open(['action' => ['PostsController@destroy', $post->id], 
                                             'method' => 'POST'
                                         ])!!}
                                 
                                             {{Form::hidden('_method', 'DELETE')}}
-                                            {{Form::submit('Delete', ['class' => 'btn btn-outline-danger btn-sm'])}}
+                                            {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
                                         {!!Form::close()!!}
-                                    </th>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </table>

@@ -45,14 +45,15 @@
             <!-- Include this after the sweet alert js file -->
             @include('sweet::alert')
 
-            <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+            
+            <div class="dmtop">Scroll to Top</div>
+            
+        </div>
+        <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
             <script>
                 CKEDITOR.replace( 'article-ckeditor' );
             </script>
 
-            <div class="dmtop">Scroll to Top</div>
-            
-        </div>
 
         <script src="{{ asset('assets/js/jquery-1.js') }}"></script>
         <script src="{{ asset('assets/js/canvasjs.js') }}"></script>

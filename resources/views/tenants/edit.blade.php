@@ -41,6 +41,6 @@
     
     
 
-    {{Form::submit('Submit', ['class' => 'btn btn-outline-success'])}}
+    {{Form::submit('Submit', ['class' => 'btn btn-success'])}}
 {!! Form::close() !!}
 @endsection

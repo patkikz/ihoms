@@ -39,16 +39,16 @@
                         <a class="nav-link" href="/contact">Contact</a>
                     </li>
                     @guest
-                        <li class="nav-item">
+                        <li class="{{Request::is('login') ? 'active' : ''}}">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
-                            <li class="nav-item">
+                            <li class="{{Request::is('register') ? 'active' : ''}}">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="{{Request::is('dashboard', 'posts') ? 'active' : ''}}">
                             <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}  {{Auth::user()->isAdmin == 1 ? '(Admin)' : ''}} <span class="caret"></span>
                             </a>

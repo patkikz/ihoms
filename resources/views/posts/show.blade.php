@@ -17,7 +17,7 @@
 
     @if(!Auth::guest())
         @if(Auth::user()->id == $post->user_id)
-            <a href="/posts/{{$post->id}}/edit" class="btn btn-outline-dark">Edit</a>
+            <a href="/posts/{{$post->id}}/edit" class="btn btn-dark">Edit</a>
         
         
             {!!Form::open(['action' => ['PostsController@destroy', $post->id], 
@@ -25,7 +25,7 @@
             ])!!}
 
                 {{Form::hidden('_method', 'DELETE')}}
-                {{Form::submit('Delete', ['class' => 'btn btn-outline-danger'])}}
+                {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
             {!!Form::close()!!}
         @endif
     @endif
