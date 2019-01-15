@@ -18,14 +18,16 @@ class PagesController extends Controller
         return view('pages.about')->with('title', $title);
     }
 
-    public function services()
-    {   
-        $data = array
-        (
-            'title' => 'Services',
-            'contents' => ['H.O Master File','Monthly Dues','Payment Management',
-                        'Car Sticker','Clubhouse Reservation','Expenses','File Management']
-        ); 
-        return view('pages.services')->with($data);
+    public function company()
+    {
+        $title = ' ';
+        return view('pages.company', compact('title'));
     }
+
+    public function contact()
+    {
+        $title = ' ';
+        return view('pages.contact', compact('title'));
+    }
+
 }
