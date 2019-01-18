@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="au-card au-card-padding rounded border-0">
-                    {!! Form::open(['action' => 'TenantsController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'class' => 'well']) !!}
+                    {!! Form::open(['action' => 'TenantsController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data']) !!}
                             
                     <div class="form-group">
                         {{Form::label('last_name', 'Last Name')}}
@@ -74,6 +74,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <div class="form-row mx-auto">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
@@ -90,6 +91,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <div class="form-row mx-auto">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
@@ -106,6 +108,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <div class="form-row mx-auto">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
@@ -123,6 +126,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="col-12 col-md-12 col-lg-2 col-xl-2 mb-2">
                                 <div id="upload" class="position-relative">
                                     <div class="dashed_upload">

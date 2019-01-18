@@ -66,7 +66,9 @@
                 <div class="col-xl-6 col-lg-6 my-4">
                     <div class="au-card au-card-padding rounded border-0">
                         <div>Dashboard{!! auth()->user()->isAdmin == 1 ? ' - Admin' : ' - User' !!}
+                            @can('isAdmin')
                             <a href="/posts/create" class="btn btn-primary float-right">Create Post</a>
+                            @endcan
                         </div>
         
                         <div class="card-body">

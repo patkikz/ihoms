@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Tenant;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\VerifiesEmails;
 use Alert;
 
 class TenantsController extends Controller
 {
+    use RegistersUsers;
+    use VerifiesEmails;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -58,6 +65,12 @@ class TenantsController extends Controller
         $request['user_id'] = auth()->id();
                 
         Tenant::create($request);
+        User::create([
+            'name' => $request['first_name'],
+            'email' => 'default@sample.com',
+            'password' => Hash::make('P@ssw0rd'),
+        ]);
+        
         return redirect('/tenants')->with('success', 'Tenant Created Successfully');
     }
 

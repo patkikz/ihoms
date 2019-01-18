@@ -36,7 +36,7 @@ Route::resource('expenses', 'ExpensesController')->middleware('checkuserrole');
 Route::resource('purposes', 'PurposesController')->middleware('checkuserrole');
 
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true ,'register' => false]);
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('verified');
 
