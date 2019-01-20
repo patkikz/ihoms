@@ -21,7 +21,7 @@ class ExpensesController extends Controller
     public function index()
     {
        
-        $expenses = Expense::where('user_id', auth()->id())->get()->orderBy('created_at', 'desc')->paginate(3);
+        $expenses = Expense::where('user_id', auth()->id())->orderBy('created_at', 'desc')->paginate(3);
 
         return view('expenses.index')->with('expenses',$expenses);
     }

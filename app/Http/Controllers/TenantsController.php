@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Alert;
+use DB;
 
 class TenantsController extends Controller
 {
@@ -26,7 +27,7 @@ class TenantsController extends Controller
      */
     public function index()
     {
-        $tenants = Tenant::where('user_id', auth()->id())->get();
+        $tenants = Tenant::where('owner_id', auth()->id())->get();
 
         return view('tenants.index')->with('tenants', $tenants);
     }
@@ -38,6 +39,7 @@ class TenantsController extends Controller
      */
     public function create()
     {
+        
         return view('tenants.create');
     }
 
@@ -50,24 +52,32 @@ class TenantsController extends Controller
     public function store(Request $request)
     {
     
-        
         $request = request()->validate(
             [
+                'email' => 'required',
                 'last_name' => 'required',
                 'first_name' => 'required',
                 'middle_name' => 'required',
+                'birth_date' => 'required',
                 'birth_place' => 'required',
+                'province' => 'required',
                 'block' => 'required',
                 'lot' => 'required',
                 'street' => 'required',
+                'payment_mode' => 'required',
+                'withParking' => 'required',
             ]);
         
-        $request['user_id'] = auth()->id();
+        $request['owner_id'] = auth()->id();
                 
-        Tenant::create($request);
+        
+        $id = Tenant::create($request)->id;
+        
+    
         User::create([
+            'tenant_id' => $id,
             'name' => $request['first_name'],
-            'email' => 'default@sample.com',
+            'email' => $request['email'],
             'password' => Hash::make('P@ssw0rd'),
         ]);
         
@@ -93,7 +103,7 @@ class TenantsController extends Controller
      */
     public function edit(Tenant $tenant)
     {
-        if(auth()->user()->id !== $tenant->user_id)
+        if(auth()->user()->id !== $tenant->owner_id)
         {
             return redirect('/tenants')->with('error', 'Unauthorized Page');    
         }
@@ -112,13 +122,18 @@ class TenantsController extends Controller
     {
         $tenant->update($request->validate(
             [
+                'email' => 'required',
                 'last_name' => 'required',
                 'first_name' => 'required',
                 'middle_name' => 'required',
+                'birth_date' => 'required',
                 'birth_place' => 'required',
+                'province' => 'required',
                 'block' => 'required',
                 'lot' => 'required',
                 'street' => 'required',
+                'payment_mode' => 'required',
+                'withParking' => 'required',
             ]));
 
         return redirect('/tenants')->with('success','Tenant Updated');

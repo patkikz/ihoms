@@ -66,6 +66,11 @@ class PurposesController extends Controller
      */
     public function edit(Purpose $purpose)
     {
+        if(auth()->user()->id !== $purpose->user_id)
+        {
+            return redirect('/expenses')->with('error', 'Unauthorized Page');    
+        }
+
         return view('purposes.edit', compact('purpose'));
     }
 
@@ -94,6 +99,11 @@ class PurposesController extends Controller
      */
     public function destroy(Purpose $purpose)
     {
+        if(auth()->user()->id !== $purpose->user_id)
+        {
+            return redirect('/purposes')->with('error', 'Unauthorized Page');    
+        }
+
         $purpose->delete();
 
         return redirect('/purposes')->with('success','Purpose Deleted');
