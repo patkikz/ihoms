@@ -21,7 +21,7 @@
         </li>
         <li>
             @can('isAdmin')
-                <a href="#">Payment Management</a>
+                <a href="/payments">Payment Management</a>
             @endcan 
         </li>
         <li>

@@ -34,6 +34,7 @@ Route::resource('posts','PostsController');
 Route::resource('tenants','TenantsController')->middleware('checkuserrole');
 Route::resource('expenses', 'ExpensesController')->middleware('checkuserrole');
 Route::resource('purposes', 'PurposesController')->middleware('checkuserrole');
+Route::resource('payments', 'PaymentsController')->middleware('checkuserrole');
 
 
 Auth::routes(['verify' => true ,'register' => false]);

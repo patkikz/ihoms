@@ -1,0 +1,71 @@
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.yintly-bg-dark {
+  background: #181a1d;
+}
+
+.text-secondary a:hover {
+  color: #fff !important;
+  text-decoration: none;
+}
+
+a.text-secondary:focus, a.text-secondary:hover {
+  color: #ffffff!important;
+  text-decoration: none !important;
+}
+
+@media (min-width: 576px) {
+  .m-0.text-right.small {
+    text-align: center;
+  }
+}
+
+.yintly-color {
+  color: #f98251;
+}
+
+a.yintly-color:hover {
+  color: #df622e;
+  text-decoration: none !important;
+}
+
+.yintly-bg-dark {
+  background: #181a1d;
+}
+
+.text-secondary a:hover {
+  color: #fff !important;
+  text-decoration: none;
+}
+
+a.text-secondary:focus, a.text-secondary:hover {
+  color: #ffffff!important;
+  text-decoration: none !important;
+}
+
+@media (min-width: 576px) {
+  .m-0.text-right.small {
+    text-align: center;
+  }
+}
+
+.yintly-color {
+  color: #f98251;
+}
+
+a.yintly-color:hover {
+  color: #df622e;
+  text-decoration: none !important;
+}
+
+.text-white {
+  position: relative;
+  top: 5px;
+  font-weight: bold;
+  font-size: 15px;
+}
+

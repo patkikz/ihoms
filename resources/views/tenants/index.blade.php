@@ -16,7 +16,7 @@
                 <div class="col-xl-12 col-lg-12">
                     <div class="au-card au-card-padding rounded border-0">
                     <div class="">Homeowner Masterfile
-                        <a href="/tenants/create" class="btn btn-primary float-right">Add Tenant</a>
+                        <a href="/tenants/create" class="btn btn-primary float-right primary-bg rounded-0">Add Tenant</a>
                     </div>
     
                     <div class="">

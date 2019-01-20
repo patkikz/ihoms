@@ -10,103 +10,76 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
-                    @include('inc.search')
-
-                    <div class="general-title">
-                        <h3><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></h3>
-                    </div>
-
-                    {{-- <div class="row">
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-3">
-                            <div class="au-card rate-counter-block rounded border-0">
-                                <div class="icon rate-icon  "> <img src="assets/images/svg/mortgage.svg" alt="Borrow - Loan Company Website Template" class="icon-svg-1x"></div>
-                                <div class="rate-box">
-                                    <h1 class="loan-rate">3.74%</h1>
-                                    <small class="rate-title">Homeowener</small>
-                                </div>
+                    <header class="mb-2 row justify-center">
+                        <div class="col-3 col-sm-2 col-md-6 col-lg-6 col-xl-6" >
+                            <div class="float-left text-center text-md-left input-group">
+                                <a href="#menu-toggle" class="btn btn-primary rounded-0 primary-bg" id="menu-toggle"><i class="fa fa-bars"></i></a>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-3">
-                            <div class="au-card rate-counter-block rounded border-0">
-                                <div class="icon rate-icon  "> <img src="assets/images/svg/loan.svg" alt="Borrow - Loan Company Website Template" class="icon-svg-1x"></div>
-                                <div class="rate-box">
-                                    <h1 class="loan-rate">8.96%</h1>
-                                    <small class="rate-title">Payment</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-3">
-                            <div class="au-card rate-counter-block rounded border-0">
-                                <div class="icon rate-icon  "> <img src="assets/images/svg/car.svg" alt="Borrow - Loan Company Website Template" class="icon-svg-1x"></div>
-                                <div class="rate-box">
-                                    <h1 class="loan-rate">6.70%</h1>
-                                    <small class="rate-title">Car sticker</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-3">
-                            <div class="au-card rate-counter-block rounded border-0">
-                                <div class="icon rate-icon  "> <img src="assets/images/svg/credit-card.svg" alt="Borrow - Loan Company Website Template" class="icon-svg-1x"></div>
-                                <div class="rate-box">
-                                    <h1 class="loan-rate">9.00%</h1>
-                                    <small class="rate-title">Credit card</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
-                </div>
 
-                <div class="col-xl-6 col-lg-6 my-4">
-                    <div class="au-card au-card-padding rounded border-0">
-                        <div id="chartContainer" style="height: 400px; width: 100%;"></div>
-                        
-                    </div>
-                </div>
-
-                <div class="col-xl-6 col-lg-6 my-4">
-                    <div class="au-card au-card-padding rounded border-0">
-                        <div>Dashboard{!! auth()->user()->isAdmin == 1 ? ' - Admin' : ' - User' !!}
-                            @can('isAdmin')
-                            <a href="/posts/create" class="btn btn-primary float-right">Create Post</a>
-                            @endcan
+                        <div class="col-9 col-sm-10 col-md-6 col-lg-6 col-xl-6" >
+                            <div class="float-left text-center text-md-left input-group">
+                                <input id="btn-input" type="text" class="form-control input-md rounded-0" placeholder="Search" />
+                                <span class="input-group-btn">
+                                <button class="btn btn-primary btn-md border-left-0 primary-bg rounded-0"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
                         </div>
-        
-                        <div class="card-body">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
+                    </header>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card rounded-0 border-0">
+                                <div class="card-header pb-0">
+                                    <h4>DASHBOARD</h4>
                                 </div>
-                            @endif
-                        
-                        <h3>Your Blog Posts!</h3>
-                        @if(count($posts) > 0)
-                            <table class="table table-striped table-sm">
-                                <tr>
-                                    <th>Title</th>
-                                    <th colspan="2">Action</th>
+                                <div class="card-body">
+                                    <div>{!! auth()->user()->isAdmin == 1 ? ' - Admin' : ' - User' !!}
+                                        @can('isAdmin')
+                                        <a href="/posts/create" class="btn btn-primary float-right primary-bg rounded-0">Create Post</a>
+                                        @endcan
+                                    </div>
+                    
+                                    <div class="">
+                                        @if (session('status'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('status') }}
+                                            </div>
+                                        @endif
                                     
-                                </tr>
-                                @foreach ($posts as $post)
-                                    <tr>
-                                    <td>{{$post->title}}</td>
-                                    <td><a href="/posts/{{$post->id}}/edit" class="btn btn-dark btn-sm">Edit</a></td>
-                                    <td>
-                                            {!!Form::open(['action' => ['PostsController@destroy', $post->id], 
-                                            'method' => 'POST'
-                                        ])!!}
-                                
-                                            {{Form::hidden('_method', 'DELETE')}}
-                                            {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
-                                        {!!Form::close()!!}
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </table>
-                        @else
-                            <em>You have no post yet. Create a post now!</em>
-                        @endif
+                                    <h3>Your Blog Posts!</h3>
+                                    @if(count($posts) > 0)
+                                        <table class="table table-striped table-sm">
+                                            <tr>
+                                                <th>Title</th>
+                                                <th colspan="2">Action</th>
+                                                
+                                            </tr>
+                                            @foreach ($posts as $post)
+                                                <tr>
+                                                <td>{{$post->title}}</td>
+                                                <td><a href="/posts/{{$post->id}}/edit" class="btn btn-dark btn-sm">Edit</a></td>
+                                                <td>
+                                                        {!!Form::open(['action' => ['PostsController@destroy', $post->id], 
+                                                        'method' => 'POST'
+                                                    ])!!}
+                                            
+                                                        {{Form::hidden('_method', 'DELETE')}}
+                                                        {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
+                                                    {!!Form::close()!!}
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </table>
+                                    @else
+                                        <em>You have no post yet. Create a post now!</em>
+                                    @endif
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

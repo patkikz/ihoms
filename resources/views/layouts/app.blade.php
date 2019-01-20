@@ -6,26 +6,11 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <title>{{config('app.name', 'iHOMS')}}</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Ruda:400,900,700" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('fonts/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css') }}">
 
-        <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
-        <script type="text/javascript" src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('assets/bootstrap/js/bootstrap.js') }}"></script>
-
-        <link href="{{ asset('assets/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/lib/prettyphoto/css/prettyphoto.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/lib/hover/hoverex-all.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/lib/jetmenu/jetmenu.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/lib/owl-carousel/owl-carousel.css') }}" rel="stylesheet">
-
-        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('assets/css/colors/blue.css') }}">
-
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/preloader.css') }}">
-        <script type="text/javascript" src="{{ asset('assets/js/preloader.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body onload="myFunction()">
 
@@ -46,7 +31,7 @@
             @include('sweet::alert')
 
             
-            <div class="dmtop">Scroll to Top</div>
+            <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
             
         </div>
         <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
@@ -55,26 +40,15 @@
             </script>
 
 
-        <script src="{{ asset('assets/js/jquery-1.js') }}"></script>
-        <script src="{{ asset('assets/js/canvasjs.js') }}"></script>
-        <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('assets/lib/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('assets/lib/php-mail-form/validate.js') }}"></script>
-        <script src="{{ asset('assets/lib/prettyphoto/js/prettyphoto.js') }}"></script>
-        <script src="{{ asset('assets/lib/isotope/isotope.min.js') }}"></script>
-        <script src="{{ asset('assets/lib/hover/hoverdir.js') }}"></script>
-        <script src="{{ asset('assets/lib/hover/hoverex.min.js') }}"></script>
-        <script src="{{ asset('assets/lib/unveil-effects/unveil-effects.js') }}"></script>
-        <script src="{{ asset('assets/lib/owl-carousel/owl-carousel.js') }}"></script>
-        <script src="{{ asset('assets/lib/jetmenu/jetmenu.js') }}"></script>
-        <script src="{{ asset('assets/lib/animate-enhanced/animate-enhanced.min.js') }}"></script>
-        <script src="{{ asset('assets/lib/jigowatt/jigowatt.js') }}"></script>
-        <script src="{{ asset('assets/lib/easypiechart/easypiechart.min.js') }}"></script>
-        <script src="{{ asset('assets/js/col-area-line.js') }}"></script>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
 
-        <script src="{{ asset('assets/js/menu.js') }}"></script>
+        <script src="{{ asset('js/preloader.js') }}"></script>
+        <script src="{{ asset('js/menu.js') }}"></script>
 
-        <script src="{{ asset('assets/js/main.js') }}"></script>
+        <script src="{{ asset('js/back-to-top.js') }}"></script>
+        <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
         
     </body>
 </html>
