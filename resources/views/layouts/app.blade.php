@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <title>{{config('app.name', 'iHOMS')}}</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('fonts/fontawesome-all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css') }}">
@@ -25,15 +26,15 @@
             @yield('content')
             
 
-            <script src="js/sweetalert.min.js"></script>
-
-            <!-- Include this after the sweet alert js file -->
-            @include('sweet::alert')
 
             
             <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
             
         </div>
+        <script src="js/sweetalert.min.js"></script>
+
+        <!-- Include this after the sweet alert js file -->
+        @include('sweet::alert')
         <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
             <script>
                 CKEDITOR.replace( 'article-ckeditor' );
