@@ -20,11 +20,11 @@
                     </div>
     
                     <div class="">
-                        @if (session('status'))
+                        {{-- @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
-                        @endif
+                        @endif --}}
                   
                     <h3>Tenants</h3>
                     @if(count($tenants) > 0)
@@ -41,7 +41,9 @@
                                 <td>{{$tenant->last_name}}</td>
                                 <td>{{$tenant->first_name}}</td>
                                 <td>{{$tenant->middle_name}}</td>
-                                <td><a href="/tenants/{{$tenant->id}}/edit" class="btn btn-dark btn-sm">Edit</a></td>
+                                <td><a href="/tenants/{{$tenant->id}}/edit" class="btn btn-dark btn-sm">Edit</a>
+                                    <a href="/tenants/{{$tenant->id}}/family-member" class="btn btn-dark btn-sm">Add Family Member</a>
+                                </td>
                                 <td>
                                         {!!Form::open(['action' => ['TenantsController@destroy', $tenant->id], 
                                         'method' => 'POST'

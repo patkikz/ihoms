@@ -36,6 +36,8 @@ Route::resource('expenses', 'ExpensesController')->middleware('checkuserrole');
 Route::resource('purposes', 'PurposesController')->middleware('checkuserrole');
 Route::resource('payments', 'PaymentsController')->middleware('checkuserrole');
 
+// Route::get('/tenants/{id}/family-member', 'TenantsController@familyMember');
+// Route::post('/tenants', 'TenantsController@familyMemmberStore');
 
 Auth::routes(['verify' => true ,'register' => false]);
 

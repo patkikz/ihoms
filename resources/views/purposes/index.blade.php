@@ -20,11 +20,11 @@
                         </div>
         
                         <div class="">
-                            @if (session('status'))
+                            {{-- @if (session('status'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('status') }}
                                 </div>
-                            @endif
+                            @endif --}}
                         
                         <h3>Purposes</h3>
                         @if(count($purposes) > 0)

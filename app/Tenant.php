@@ -14,4 +14,14 @@ class Tenant extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function familyMembers()
+    {
+        return $this->hasMany(FamilyMember::class);
+    }
 }

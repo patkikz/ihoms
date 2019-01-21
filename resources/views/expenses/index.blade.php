@@ -20,12 +20,12 @@
                         </div>
         
                         <div class="">
-                            @if (session('status'))
+                            {{-- @if (session('status'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('status') }}
                                 </div>
                             @endif
-                        
+                         --}}
                         <h3>Expenses</h3>
                         @if(count($expenses) > 0)
                             <table class="table table-striped table-sm">

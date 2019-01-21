@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Payment;
-use App\Tenant;
+use App\FamilyMember;
 use Illuminate\Http\Request;
 
-class PaymentsController extends Controller
+class FamilyMembersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class PaymentsController extends Controller
      */
     public function index()
     {
-        $tenants = Tenant::pluck('id', 'id');   
-        return view('payments.index')->with('tenants', $tenants);
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class PaymentsController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -37,27 +35,16 @@ class PaymentsController extends Controller
      */
     public function store(Request $request)
     {
-        $request = request()->validate(
-            [
-                'tenant_id' => 'required',
-                'transaction_date' => 'required',
-                'last_name' => 'required',
-                'first_name' => 'required',
-                'middle_name' => 'required',
-            ]);
-
-        Payment::create($request);
-
-        return redirect('/payments')->with('success', 'Payment Added');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\FamilyMember  $familyMember
      * @return \Illuminate\Http\Response
      */
-    public function show(Payment $payment)
+    public function show(FamilyMember $familyMember)
     {
         //
     }
@@ -65,10 +52,10 @@ class PaymentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\FamilyMember  $familyMember
      * @return \Illuminate\Http\Response
      */
-    public function edit(Payment $payment)
+    public function edit(FamilyMember $familyMember)
     {
         //
     }
@@ -77,10 +64,10 @@ class PaymentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Payment  $payment
+     * @param  \App\FamilyMember  $familyMember
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Payment $payment)
+    public function update(Request $request, FamilyMember $familyMember)
     {
         //
     }
@@ -88,10 +75,10 @@ class PaymentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\FamilyMember  $familyMember
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Payment $payment)
+    public function destroy(FamilyMember $familyMember)
     {
         //
     }

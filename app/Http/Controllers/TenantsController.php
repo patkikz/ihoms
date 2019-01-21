@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Tenant;
 use App\User;
+use App\Relationship;
+use App\FamilyMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -27,6 +29,7 @@ class TenantsController extends Controller
      */
     public function index()
     {
+        
         $tenants = Tenant::where('owner_id', auth()->id())->get();
 
         return view('tenants.index')->with('tenants', $tenants);
@@ -39,7 +42,6 @@ class TenantsController extends Controller
      */
     public function create()
     {
-        
         return view('tenants.create');
     }
 
@@ -80,7 +82,7 @@ class TenantsController extends Controller
             'email' => $request['email'],
             'password' => Hash::make('P@ssw0rd'),
         ]);
-        
+    
         return redirect('/tenants')->with('success', 'Tenant Created Successfully');
     }
 
@@ -120,7 +122,7 @@ class TenantsController extends Controller
      */
     public function update(Request $request ,Tenant $tenant)
     {
-        $tenant->update($request->validate(
+        $tenant->update(request()->validate(
             [
                 'email' => 'required',
                 'last_name' => 'required',
@@ -152,4 +154,27 @@ class TenantsController extends Controller
 
         return redirect('/tenants')->with('success', 'Tenant Removed');
     }
+
+    // public function familyMember(Tenant $tenant)
+    // {
+    //     $relationships = Relationship::pluck('relationship_name', 'id');
+    //     return view('tenants.family-member', compact('tenant'))->withRelationships($relationships);
+    // }
+
+    // public function familyMemberStore(Request $request)
+    // {
+    //       $request = request()->validate(
+    //         [    
+    //             'last_name' => 'required',
+    //             'first_name' => 'required',
+    //             'middle_name' => 'required',
+    //             'birth_date' => 'required',
+    //             'relationship_id' => 'required'
+    //         ]);
+
+
+    //        dd(FamilyMember::create($request));
+
+    //         return redirect('/tenants')->with('success', 'Family Member Added!');
+    // }
 }

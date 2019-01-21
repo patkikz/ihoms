@@ -45,7 +45,6 @@ class ExpensesController extends Controller
      */
     public function store(Request $request)
     {
-
        $request = request()->validate(
            [
                'purpose' => 'required',

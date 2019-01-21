@@ -133,6 +133,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr>
+                            
+                            
                             <div class="form-row mx-auto">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
                                         {{Form::submit('Save', ['class' => 'btn btn-primary primary-bg rounded-0'])}}
