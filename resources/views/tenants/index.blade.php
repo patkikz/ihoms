@@ -42,7 +42,6 @@
                                 <td>{{$tenant->first_name}}</td>
                                 <td>{{$tenant->middle_name}}</td>
                                 <td><a href="/tenants/{{$tenant->id}}/edit" class="btn btn-dark btn-sm">Edit</a>
-                                    <a href="/tenants/{{$tenant->id}}/family-member" class="btn btn-dark btn-sm">Add Family Member</a>
                                 </td>
                                 <td>
                                         {!!Form::open(['action' => ['TenantsController@destroy', $tenant->id], 

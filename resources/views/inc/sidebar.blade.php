@@ -21,7 +21,12 @@
         </li>
         <li>
             @can('isAdmin')
-                <a href="/payments">Payment Management</a>
+                <a href="#" class="dropdown-btn">Payment Management <i class="fa fa-caret-down"></i></a>
+                <div class="dropdown-container">
+                    <a href="/dues">Monthly Dues</a>
+                    <a href="/car-stickers">Car Stickers</a>
+                    <a href="/reservations">Club House Reservation</a>
+                </div>
             @endcan 
         </li>
         <li>

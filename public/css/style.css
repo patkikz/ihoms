@@ -1297,6 +1297,16 @@ body.nobg .section1 {
   background: none;
 }
 
+.dropdown-container {
+  display: none;
+  background-color: #1f7ab7;
+}
+
+.dropdown-container a{
+  padding-left: 10px;
+}
+
+
 @media(min-width:768px) {
   #wrapper {
     padding-left: 0;

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Payment;
+use App\Due;
 use App\Tenant;
 use Illuminate\Http\Request;
 
-class PaymentsController extends Controller
+class DuesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,10 @@ class PaymentsController extends Controller
      */
     public function index()
     {
-        $tenants = Tenant::pluck('id', 'id');   
-        return view('payments.index')->with('tenants', $tenants);
+        $tenants = Tenant::all();
+        $dues = Due::all();
+
+        return view('dues.index', compact('tenants', 'dues'));
     }
 
     /**
@@ -26,7 +28,8 @@ class PaymentsController extends Controller
      */
     public function create()
     {
-        
+        $tenants = Tenant::pluck('id', 'id');
+        return view ('dues.create')->with('tenants', $tenants);
     }
 
     /**
@@ -44,20 +47,23 @@ class PaymentsController extends Controller
                 'last_name' => 'required',
                 'first_name' => 'required',
                 'middle_name' => 'required',
+                'amount' => 'required',
+                'tender' => 'required',
+                'change' => 'required',
             ]);
 
-        Payment::create($request);
+        Due::create($request);
 
-        return redirect('/payments')->with('success', 'Payment Added');
+        return redirect('/dues')->with('success', 'Payment Added');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\Due  $due
      * @return \Illuminate\Http\Response
      */
-    public function show(Payment $payment)
+    public function show(Due $due)
     {
         //
     }
@@ -65,10 +71,10 @@ class PaymentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\Due  $due
      * @return \Illuminate\Http\Response
      */
-    public function edit(Payment $payment)
+    public function edit(Due $due)
     {
         //
     }
@@ -77,10 +83,10 @@ class PaymentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Payment  $payment
+     * @param  \App\Due  $due
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Payment $payment)
+    public function update(Request $request, Due $due)
     {
         //
     }
@@ -88,11 +94,12 @@ class PaymentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\Due  $due
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Payment $payment)
+    public function destroy(Due $due)
     {
         //
     }
+    
 }

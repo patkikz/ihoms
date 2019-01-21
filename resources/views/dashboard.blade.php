@@ -26,15 +26,15 @@
                             </div>
                         </div>
                     </header>
-
+                    
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card rounded-0 border-0">
                                 <div class="card-header pb-0">
-                                    <h4>DASHBOARD</h4>
+                                    <h4>DASHBOARD{!! auth()->user()->isAdmin == 1 ? ' - Admin' : ' - User' !!}</h4>
                                 </div>
                                 <div class="card-body">
-                                    <div>{!! auth()->user()->isAdmin == 1 ? ' - Admin' : ' - User' !!}
+                                    <div>
                                         @can('isAdmin')
                                         <a href="/posts/create" class="btn btn-primary float-right primary-bg rounded-0">Create Post</a>
                                         @endcan
@@ -79,7 +79,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

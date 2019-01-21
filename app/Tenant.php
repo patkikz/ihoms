@@ -15,9 +15,9 @@ class Tenant extends Model
         return $this->hasOne(User::class);
     }
 
-    public function payments()
+    public function dues()
     {
-        return $this->hasMany(Payment::class);
+        return $this->hasMany(Due::class);
     }
 
     public function familyMembers()

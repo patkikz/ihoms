@@ -34,10 +34,10 @@ Route::resource('posts','PostsController');
 Route::resource('tenants','TenantsController')->middleware('checkuserrole');
 Route::resource('expenses', 'ExpensesController')->middleware('checkuserrole');
 Route::resource('purposes', 'PurposesController')->middleware('checkuserrole');
-Route::resource('payments', 'PaymentsController')->middleware('checkuserrole');
+Route::resource('dues', 'DuesController')->middleware('checkuserrole');
+Route::resource('car-stickers', 'CarStickersController')->middleware('checkuserrole');
+Route::resource('reservations', 'ReservationsController')->middleware('checkuserrole');
 
-// Route::get('/tenants/{id}/family-member', 'TenantsController@familyMember');
-// Route::post('/tenants', 'TenantsController@familyMemmberStore');
 
 Auth::routes(['verify' => true ,'register' => false]);
 

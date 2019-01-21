@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{!! Form::open(['action' => ['TenantsController@storeFamilyMember', $tenant->id], 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'class' => 'well']) !!}
+{!! Form::open(['action' => ['TenantsController@familyMemberStore', $tenant->id], 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'class' => 'well']) !!}
     
 
     <div class="form-group">

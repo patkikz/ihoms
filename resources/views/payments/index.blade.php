@@ -35,21 +35,9 @@
                                     <h4>PAYMENT MANAGEMENT</h4>
                                 </div>
                                 <div class="card-body">
-
-                                <main>
-                                    <input class="tab-menu" id="tab1" type="radio" name="tabs" checked>
-                                    <label class="tab-title" for="tab1">Monthly Dues</label>
-
-                                    <input class="tab-menu" id="tab2" type="radio" name="tabs">
-                                    <label class="tab-title" for="tab2">Car Stickers</label>
-
-                                    <input class="tab-menu" id="tab3" type="radio" name="tabs">
-                                    <label class="tab-title" for="tab3">Club House Reservation</label>
-
-                                   @include('inc.dues')
-                                   @include('inc.cars')
-                                   @include('inc.reservations')     
-                                </main>
+                                    @include('inc.dues')
+                                    @include('inc.cars')
+                                    @include('inc.reservations') 
                                 </div>
                             </div>
                         </div>
