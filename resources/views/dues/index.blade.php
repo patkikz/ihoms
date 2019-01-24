@@ -46,7 +46,7 @@
                                     <td>{{$due->last_name}}</td>
                                     <td>{{$due->first_name}}</td>
                                     <td>{{$due->middle_name}}</td>
-                                    <td>{{$due->transaction_date->format('M d Y')}}</td>
+                                    <td>{{$due->transaction_date->format('F d, Y')}}</td>
                                     <td>
                                        @if ($due->amount != null)
                                            <?php echo 'Paid';?>

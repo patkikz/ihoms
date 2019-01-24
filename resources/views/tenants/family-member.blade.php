@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+{{$tenant->id}}'s FamilyMember
 {!! Form::open(['action' => ['TenantsController@familyMemberStore', $tenant->id], 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'class' => 'well']) !!}
     
-
+    {{Form::hidden('tenant_id', $tenant->id)}}
     <div class="form-group">
         {!!Form::label('last_name', 'Last Name')!!}
         {!!Form::text('last_name', '', ['placeholder' => 'Last Name', 'class' => 'form-control form-control-sm'])!!}

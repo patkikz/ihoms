@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FamilyMember;
+use App\Tenant;
 use Illuminate\Http\Request;
 
 class FamilyMembersController extends Controller
@@ -14,7 +15,9 @@ class FamilyMembersController extends Controller
      */
     public function index()
     {
-        //
+        $familyMembers =  FamilyMember::all();
+
+        return view('family-members.index');
     }
 
     /**
@@ -24,7 +27,9 @@ class FamilyMembersController extends Controller
      */
     public function create()
     {
-        //
+        $tenants = Tenant::pluck('last_name' , 'id');
+
+        return view('family-members.create')->withTenants('tenants');
     }
 
     /**
@@ -35,7 +40,17 @@ class FamilyMembersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request = request()->validate(
+            [
+                'last_name' => 'required',
+                'first_name' => 'required',
+                'middle_name' => 'required',
+                'birth_date' => 'required',
+                'relationship' => 'required',
+            ]);
+        FamilyMember::create($request);
+
+        return redirect('/family-members')->with('success', 'Family Member Added!');
     }
 
     /**

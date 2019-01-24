@@ -31,10 +31,17 @@ Route::get('/company', 'PagesController@company');
 Route::get('/contact', 'PagesController@contact');
 
 Route::resource('posts','PostsController');
+
+Route::get('tenants/{tenant}/family-members' , 'TenantsController@familyMember');
+Route::post('tenants/{tenant}/family-members' , 'TenantsController@familyMemberStore');
 Route::resource('tenants','TenantsController')->middleware('checkuserrole');
+
 Route::resource('expenses', 'ExpensesController')->middleware('checkuserrole');
 Route::resource('purposes', 'PurposesController')->middleware('checkuserrole');
+
+Route::get('dues/get-tenant-details/{id}','DuesController@tenantDetails');
 Route::resource('dues', 'DuesController')->middleware('checkuserrole');
+
 Route::resource('car-stickers', 'CarStickersController')->middleware('checkuserrole');
 Route::resource('reservations', 'ReservationsController')->middleware('checkuserrole');
 

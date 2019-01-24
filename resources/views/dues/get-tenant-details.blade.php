@@ -80,7 +80,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="modal fade" id="dues-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content rounded-0 border-0">
@@ -128,7 +128,6 @@
                                         </div>
                                     {!! Form::close() !!}
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -137,43 +136,47 @@
         </div>
     </div>
 
-<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
-<script type="text/javascript">
+    <script>
         function popupDues() {
         $('[id*="dues-modal"]').modal('show');
         }
 
+        var getClientDetails = function(){
 
-$(document).ready(function(){
-    $('#getThis').change(function(){
-        var thisElem = $(this);
-        var id = thisElem.val();
-        var lastName = $("#lastName");
-        var firstName = $("#firstName");
-        var middleName = $("#middleName");
+var thisElem = $(this);
+//Get the selected option value
+var id = thisElem.val();
 
-        $.ajax({
-        url: '/dues/get-tenant-details/'+id,
-        type: "GET",
-        cache: false,
-        success: function (data, textStatus, jqXHR) {
-        //Way para makita mo returned data
-        console.log(data.tenant);
-        lastName.val(data.tenant.last_name);
-        firstName.val(data.tenant.first_name);
-        middleName.val(data.tenant.middle_name);
-        // year.val(data.tenant.year);
+var lastName = $("#lastName");
+var firstName = $("#firstName");
+var middleName = $("#middleName");
+// var year = $("#year");
 
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-        //if fails
-        }
-        });
+//dont forget to change domain 
+$.ajax({
+url: domain + '/dues/get-tenant-details/'+id,
+type: "GET",
+cache: false,
+success: function (data, textStatus, jqXHR) {
+//Way para makita mo returned data
+console.log(data.tenant);
+lastName.val(data.tenant.last_name);
+firstName.val(data.tenant.first_name);
+middleName.val(data.tenant.middle_name);
+year.val(data.tenant.year);
 
-
-    });
+},
+error: function (jqXHR, textStatus, errorThrown) {
+//if fails
+}
 });
+
+}
+
+$(this).on("change", "#getThis", getClientDetails);
     </script>
+    
+
 @endsection
 
     

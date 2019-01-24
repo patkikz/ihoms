@@ -1,7 +1,7 @@
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
-            <a href="#">
+            <a href="/">
                 <img class="img-fluid" src="{{ asset('assets/images/logo2.png') }}">
             </a>
         </li>
@@ -9,10 +9,12 @@
             @can('isAdmin')
                 <a href="/dashboard">Dashboard</a>
             @endcan 
+
             @can('isUser')
                 <a href="/dashboard">Dashboard</a>    
             @endcan
         </li>
+        
         <li>
             @can('isAdmin')
                 <a href="/tenants">HO Masterfile</a>

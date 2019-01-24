@@ -62,7 +62,7 @@
                             @endcan  
                         
                         @can('isUser')
-                            <a href="/dashboard" class="dropdown-item">Dashboard</a>
+                            <a href="/dashboard " class="dropdown-item">Dashboard</a>
                             <a href="/posts" class="dropdown-item">Announcement</a>    
                         @endcan
                         

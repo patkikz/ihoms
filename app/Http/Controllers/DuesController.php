@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Due;
 use App\Tenant;
 use Illuminate\Http\Request;
+use DB;
 
 class DuesController extends Controller
 {
@@ -40,7 +41,7 @@ class DuesController extends Controller
      */
     public function store(Request $request)
     {
-        $request = request()->validate(
+        $request = request()->validate( 
             [
                 'tenant_id' => 'required',
                 'transaction_date' => 'required',
@@ -102,4 +103,10 @@ class DuesController extends Controller
         //
     }
     
+    public function tenantDetails($id)
+    {
+    $tenant = DB::table('tenants')->where('id', $id)->first();
+
+    return ["tenant" => $tenant];
+    }
 }

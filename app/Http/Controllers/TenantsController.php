@@ -155,26 +155,27 @@ class TenantsController extends Controller
         return redirect('/tenants')->with('success', 'Tenant Removed');
     }
 
-    // public function familyMember(Tenant $tenant)
-    // {
-    //     $relationships = Relationship::pluck('relationship_name', 'id');
-    //     return view('tenants.family-member', compact('tenant'))->withRelationships($relationships);
-    // }
+    public function familyMember(Tenant $tenant)
+    {
+        $relationships = Relationship::pluck('relationship_name', 'id');
+        return view('tenants.family-member', compact('tenant'))->withRelationships($relationships);
+    }
 
-    // public function familyMemberStore(Request $request)
-    // {
-    //       $request = request()->validate(
-    //         [    
-    //             'last_name' => 'required',
-    //             'first_name' => 'required',
-    //             'middle_name' => 'required',
-    //             'birth_date' => 'required',
-    //             'relationship_id' => 'required'
-    //         ]);
+    public function familyMemberStore(Request $request)
+    {
+          $request = request()->validate(
+            [   
+                'tenant_id' => 'required',
+                'last_name' => 'required',
+                'first_name' => 'required',
+                'middle_name' => 'required',
+                'birth_date' => 'required',
+                'relationship_id' => 'required'
+            ]);
 
+           FamilyMember::create($request);
 
-    //        dd(FamilyMember::create($request));
-
-    //         return redirect('/tenants')->with('success', 'Family Member Added!');
-    // }
+            return redirect('/tenants')->with('success', 'Family Member Added!');
+    }
+    
 }
