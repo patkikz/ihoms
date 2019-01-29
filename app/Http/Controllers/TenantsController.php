@@ -10,8 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Carbon\Carbon;
 use Alert;
 use DB;
+use Input;
 
 class TenantsController extends Controller
 {
@@ -20,7 +22,7 @@ class TenantsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'checkuserrole'],['except' => ['index','show']]);
     }
     /**
      * Display a listing of the resource.
@@ -163,19 +165,25 @@ class TenantsController extends Controller
 
     public function familyMemberStore(Request $request)
     {
-          $request = request()->validate(
-            [   
-                'tenant_id' => 'required',
-                'last_name' => 'required',
-                'first_name' => 'required',
-                'middle_name' => 'required',
-                'birth_date' => 'required',
-                'relationship_id' => 'required'
-            ]);
+        $data = $request->all();
 
-           FamilyMember::create($request);
-
-            return redirect('/tenants')->with('success', 'Family Member Added!');
+        foreach($request->last_name as $v => $item)
+        {
+            $datas = array(
+                'tenant_id' => $request->input('tenant_id'),
+                'last_name' => $request->last_name[$v],
+                'first_name' => $request->first_name[$v],
+                'middle_name' => $request->middle_name[$v],
+                'birth_date' => $request->birth_date[$v],
+                'birth_place' => $request->birth_place[$v],
+                'province' => $request->province[$v],
+                'relationship_id' => $request->relationship_id[$v],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            );
+              FamilyMember::insert($datas);
+        }
+        return redirect('/tenants')->with('success', 'Family Member Added!'); 
     }
     
 }

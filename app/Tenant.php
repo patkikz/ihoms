@@ -9,6 +9,7 @@ class Tenant extends Model
     protected $guarded = [
     ];
 
+
     public function user()
     {
         return $this->hasOne(User::class);
@@ -17,6 +18,10 @@ class Tenant extends Model
     public function dues()
     {
         return $this->hasMany(Due::class);
+    }
+
+    public function dueTransactions(){
+        return $this->hasMany(DueTransaction::class);
     }
 
     public function familyMembers()

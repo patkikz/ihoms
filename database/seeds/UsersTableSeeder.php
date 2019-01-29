@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'isAdmin' => 1,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
-
+            'email_verified_at' => date("Y-m-d H:i:s"),
             'tenant_id' => null,
         ]);
     }

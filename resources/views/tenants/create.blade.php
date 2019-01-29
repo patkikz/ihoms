@@ -13,7 +13,10 @@
                 @include('inc.search')
                 <div class="card rounded-0 border-0">
                     <div class="card-header pb-0">
-                        <h4>HO MASTER FILE</h4>
+                        <div class="d-flex">
+                            @include('inc.back')
+                            <h2> Homeowners</h2>
+                        </div>
                     </div>
 
                     <div class="card-body au-card-padding">
@@ -27,7 +30,7 @@
                                                 <label for="email" class="mt-2">Email</label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
-                                                {{Form::email('email', '', ['class' => ($errors->has('email')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Email'])}}
+                                                {{Form::email('email', '', ['class' => ($errors->has('email')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Email'])}}
                                             </div>
                                         </div>
                                     </div>
@@ -38,13 +41,13 @@
                                                 <label class="mt-2">Full Name</label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                    {{Form::text('last_name', '', ['class' => ($errors->has('last_name')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Last Name'])}}
+                                                    {{Form::text('last_name', '', ['class' => ($errors->has('last_name')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Last Name'])}}
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                    {{Form::text('first_name', '', ['class' => ($errors->has('first_name')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'First Name'])}}
+                                                    {{Form::text('first_name', '', ['class' => ($errors->has('first_name')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'First Name'])}}
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                    {{Form::text('middle_name', '', ['class' => ($errors->has('middle_name')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Middle Name'])}}
+                                                    {{Form::text('middle_name', '', ['class' => ($errors->has('middle_name')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Middle Name'])}}
                                             </div>
                                         </div>
                                     </div>
@@ -55,13 +58,13 @@
                                                 <label class="mt-2">Birthday</label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                {{Form::date('birth_date', \Carbon\Carbon::now(), ['class' => ($errors->has('birth_date')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Birth Date'])}}
+                                                {{Form::date('birth_date', \Carbon\Carbon::now(), ['class' => ($errors->has('birth_date')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Birth Date'])}}
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                {{Form::text('birth_place', '', ['class' => ($errors->has('birth_place')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Birth Place'])}}
+                                                {{Form::text('birth_place', '', ['class' => ($errors->has('birth_place')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Birth Place'])}}
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                {{Form::text('province', '', ['class' => ($errors->has('province')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Province'])}}
+                                                {{Form::text('province', '', ['class' => ($errors->has('province')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Province'])}}
                                             </div>
                                         </div>
                                     </div>
@@ -72,13 +75,13 @@
                                                 <label class="mt-2">Address</label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                {{Form::text('block', '', ['class' => ($errors->has('block')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Block'])}}
+                                                {{Form::text('block', '', ['class' => ($errors->has('block')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Block'])}}
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                {{Form::text('lot', '', ['class' => ($errors->has('lot')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Lot'])}}     
+                                                {{Form::text('lot', '', ['class' => ($errors->has('lot')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Lot'])}}     
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                {{Form::text('street', '', ['class' => ($errors->has('street')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Street'])}}
+                                                {{Form::text('street', '', ['class' => ($errors->has('street')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Street'])}}
                                             </div>
                                         </div>
                                     </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDuesTable extends Migration
+class CreateDueTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreateDuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('dues', function (Blueprint $table) {
+        Schema::create('due_transactions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('month');
+            $table->integer('amount');
             $table->unsignedInteger('tenant_id');
-            $table->string('last_name');
-            $table->string('first_name');
-            $table->string('middle_name');
-            $table->integer('total_amount');
-            $table->integer('tender');
-            $table->integer('change');
-            $table->timestamps();
-
+            $table->unsignedInteger('due_id');
+            
             $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
+            $table->foreign('due_id')->references('id')->on('dues')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -35,6 +33,6 @@ class CreateDuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dues');
+        Schema::dropIfExists('due_transactions');
     }
 }

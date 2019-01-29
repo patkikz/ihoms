@@ -5,46 +5,30 @@
                 <img class="img-fluid" src="{{ asset('assets/images/logo2.png') }}">
             </a>
         </li>
-        <li>
-            @can('isAdmin')
-                <a href="/dashboard">Dashboard</a>
-            @endcan 
-
-            @can('isUser')
-                <a href="/dashboard">Dashboard</a>    
-            @endcan
-        </li>
-        
-        <li>
-            @can('isAdmin')
-                <a href="/tenants">HO Masterfile</a>
-            @endcan 
-            
-        </li>
-        <li>
-            @can('isAdmin')
+        @can('isAdmin')
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/tenants">HO Masterfile</a></li>
+            <li>
                 <a href="#" class="dropdown-btn">Payment Management <i class="fa fa-caret-down"></i></a>
                 <div class="dropdown-container">
                     <a href="/dues">Monthly Dues</a>
                     <a href="/car-stickers">Car Stickers</a>
                     <a href="/reservations">Club House Reservation</a>
                 </div>
-            @endcan 
-        </li>
-        <li>
-            @can('isAdmin')
-                <a href="/expenses">Expenses</a>
-            @endcan 
-        </li>
-        <li>
-            @can('isAdmin')
-                <a href="/purposes">Purposes</a>
-            @endcan 
-        </li>
-        <li>
-            @can('isAdmin')
-                <a href="#">File Management</a>
-            @endcan 
-        </li>
+            </li>
+            <li><a href="/expenses">Expenses</a></li>
+            <li>
+                <a href="#" class="dropdown-btn">File Management <i class="fa fa-caret-down"></i></a>
+                <div class="dropdown-container">
+                    
+                    <a href="/purposes">Purposes</a>
+                </div>
+            </li>
+        @endcan
+
+        @can('isUser')
+            <li><a href="/posts">Dashboard</a></li>
+            <li><a href="/tenants/family-members">My Family Members</a></li>
+        @endcan
     </ul>
 </div>

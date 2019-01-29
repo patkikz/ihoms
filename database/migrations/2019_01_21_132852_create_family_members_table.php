@@ -18,7 +18,9 @@ class CreateFamilyMembersTable extends Migration
             $table->string('last_name');
             $table->string('first_name');
             $table->string('middle_name');
-            $table->timestamp('birth_date');
+            $table->date('birth_date');
+            $table->string('birth_place');
+            $table->string('province');
 
             $table->unsignedInteger('relationship_id');
             $table->foreign('relationship_id')->references('id')->on('relationships')->onDelete('cascade');
