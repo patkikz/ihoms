@@ -1,0 +1,56 @@
+
+
+
+// $(document).ready(function(){
+//     $('#getThis').change(function(){
+//         var thisElem = $(this);
+//         var id = thisElem.val();
+//         var lastName = $("#lastName");
+//         var firstName = $("#firstName");
+//         var middleName = $("#middleName");
+
+//         $.ajax({
+//         url: '/dues/get-tenant-details/'+id,
+//         type: "GET",
+//         cache: false,
+//         success: function (data, textStatus, jqXHR) {
+//         //Way para makita mo returned data
+//         console.log(data.tenant);
+//         lastName.val(data.tenant.last_name);
+//         firstName.val(data.tenant.first_name);
+//         middleName.val(data.tenant.middle_name);
+//         // year.val(data.tenant.year);
+
+//         },
+//         error: function (jqXHR, textStatus, errorThrown) {
+//         //if fails
+//         }
+//         });
+
+
+//     });
+// });
+
+
+insert using ajax
+
+
+//   $(document).ready(function(){
+//     $('#getHere').on('submit', function(e){
+//         e.preventDefault();
+
+//         $.ajax({
+//             type: 'POST',
+//             url: "/dues",
+//             data: $('#getHere').serialize(),
+//             success: function (response)
+//             {
+//                 $('#dues-modal').modal('hide')
+//                 location.reload();
+//             },
+//             error: function(error){
+//                 alert("Data not save");
+//             }
+//         });
+//     });
+//   });

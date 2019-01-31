@@ -39,7 +39,7 @@ Route::resource('tenants','TenantsController');
 Route::resource('expenses', 'ExpensesController')->middleware('checkuserrole');
 Route::resource('purposes', 'PurposesController')->middleware('checkuserrole');
 
-Route::get('dues/get-due-details/{due}','DuesController@dueDetails');
+Route::get('dues/get-due-details/{id}','DuesController@dueDetails');
 Route::get('dues/get-tenant-details/{id}','DuesController@tenantDetails');
 Route::get('dues/autocomplete', 'DuesController@autocomplete');
 Route::resource('dues', 'DuesController')->middleware('checkuserrole');

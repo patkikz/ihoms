@@ -15,13 +15,14 @@ class CreateDueTransactionsTable extends Migration
     {
         Schema::create('due_transactions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('month');
+            $table->unsignedInteger('month');
             $table->integer('amount');
             $table->unsignedInteger('tenant_id');
             $table->unsignedInteger('due_id');
             
             $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
             $table->foreign('due_id')->references('id')->on('dues')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

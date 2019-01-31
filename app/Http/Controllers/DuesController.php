@@ -43,9 +43,10 @@ class DuesController extends Controller
         {
             $latest = Transaction::latest()->first();
         }
-
+        $transactions = DueTransaction::where('tenant_id', 'id')->get();
+        $months = DB::table('months')->pluck('name','id');
         $tenants = Tenant::pluck('id', 'id');
-        return view ('dues.create', compact('tenants', 'latest'));
+        return view ('dues.create', compact('tenants', 'latest', 'transactions', 'months'));
        
     }
 
@@ -179,9 +180,15 @@ class DuesController extends Controller
 
     public function dueDetails($id)
     {
-    $due = DB::table('dues')->where('tenant_id', $id)->get();
+
+    $due = DB::table('due_transactions')->where('tenant_id', $id)
+    ->join('months' , 'months.id' , 'due_transactions.month')
+    ->get();
+
 
     return ["due" => $due];
+
+    
     }
 
 }

@@ -36,6 +36,7 @@
                                 </div>
                                 <div class="card-body">
                                     {!! Form::open(['action' => 'DuesController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'id' => 'getHere']) !!}
+                                    {{Form::hidden('domain', '', ['id' => 'domain'])}}
                                     <div class="form-row">
                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                             <div class="form-group">
@@ -88,7 +89,20 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="here"></div>
+                                        <div>
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Due Transaction ID</td>
+                                                        <td>Month</td>
+                                                        <td>Amount</td>
+                                                        <td>Status</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="here">
+                                                </tbody>
+                                            </table>
+                                        </div>
                                         <div class="col-xl-12 col-lg-12 my-3">
                                             <div class="card">
                                                 <div class="card-header pb-0">
@@ -96,10 +110,10 @@
                                                 </div>
                                                 <div class="card-body">
                                                         <table class="table table-striped table-sm" style="width:100%;" id="myTable">
-                                                            <tbody>
+                                                            <tbody id = "addHere">
                                                                 <tr>
                                                                     <td>
-                                                                        {{Form::selectMonth('month[]', '', ['placeholder' => 'Please pick one', 'class' => 'form-control input-label rounded-0'])}}
+                                                                        {{Form::select('month[]', $months, null, ['placeholder' => 'Please pick one', 'class' => 'form-control input-label rounded-0'])}}
                                                                     </td>
                                                                     <td>
                                                                         {{Form::number('amount[]', '',['placeholder' => 'Amount', 'class' => 'form-control input-label rounded-0 amount'])}}
@@ -183,64 +197,64 @@
 
 @section('scripts')
 <script type="text/javascript">
-//   $(document).ready(function(){
-//     $('#getHere').on('submit', function(e){
-//         e.preventDefault();
-
-//         $.ajax({
-//             type: 'POST',
-//             url: "/dues",
-//             data: $('#getHere').serialize(),
-//             success: function (response)
-//             {
-//                 $('#dues-modal').modal('hide')
-//                 location.reload();
-//             },
-//             error: function(error){
-//                 alert("Data not save");
-//             }
-//         });
-//     });
-//   });
 
         function popupDues() {
         $('#dues-modal').modal('show')
         
         }
 
+var domain = $('#domain').val();
+var getTenantTransactions = function(id){
+var tb = " ";
+$.ajax({
+    url: domain + '/dues/get-due-details/'+id,
+    type: "GET",
+    cache: false,
+    success: function (data, textStatus, jqXHR)
+    {
+        $(data.due).each(function(key,value)
+        {
+            console.log(value);
+        var tr = "";
 
+        //Clear muna yung data
+        $('#here').empty();
 
+        if(data.due.length > 0)
+        {
+            $(data.due).each(function(key, value){
+                tr += '<tr>';
+                        tr+= '<td>'+value.id+'</td>';
+                        tr += '<td>'+value.name+'</td>';
+                        tr += '<td>'+value.amount+'</td>';
+                        if (value.amount != 0){
+                            tr += '<td>PAID</td>';
+                        }
+                        else{
+                            tr += '<td>UNPAID</td>'
+                        }
+                tr += '</tr>';
+            });
+        }
+        else
+        {
+            tr += '<tr>';
+                        tr += '<td colspan="3">No data found!</td>';
+                        
+                tr += '</tr>';
+        }
+        //Add yung data sa tbody
+        $('#here').append(tr);
+        });                        
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+                            //if fails
+    }
+    
+    });
 
-// $(document).ready(function(){
-//     $('#getThis').change(function(){
-//         var thisElem = $(this);
-//         var id = thisElem.val();
-//         var lastName = $("#lastName");
-//         var firstName = $("#firstName");
-//         var middleName = $("#middleName");
-
-//         $.ajax({
-//         url: '/dues/get-tenant-details/'+id,
-//         type: "GET",
-//         cache: false,
-//         success: function (data, textStatus, jqXHR) {
-//         //Way para makita mo returned data
-//         console.log(data.tenant);
-//         lastName.val(data.tenant.last_name);
-//         firstName.val(data.tenant.first_name);
-//         middleName.val(data.tenant.middle_name);
-//         // year.val(data.tenant.year);
-
-//         },
-//         error: function (jqXHR, textStatus, errorThrown) {
-//         //if fails
-//         }
-//         });
-
-
-//     });
-// });
-
+}
 $('#search').autocomplete({
     source : "{{ url('dues/autocomplete') }}",
     minLength:1,
@@ -254,16 +268,16 @@ $('#search').autocomplete({
         $('#block').val(ui.item.block);
         $('#lot').val(ui.item.lot);
         $('#street').val(ui.item.street);
-    },
-
-    
+        
+        getTenantTransactions(ui.item.id);
+    }
 });
 
 $('tbody').delegate('.amount', 'keyup', function(){
     var sum = 0;
      $('tr').each(function()
     {
-       
+
         $(this).find('.amount').each(function(){
             var amount = $(this).val();
             if(!isNaN(amount) && amount.length !== 0){
@@ -291,7 +305,7 @@ $(document).ready(function(){
         html_code +="</td>";
         html_code += "</tr>";
 
-        $('tbody').append(html_code);
+        $('#addHere').append(html_code);
     });
     $(document).on('click', '.remove', function(){
             var delete_row = $(this).data('row');
