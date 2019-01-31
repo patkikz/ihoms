@@ -28,4 +28,8 @@ class Tenant extends Model
     {
         return $this->hasMany(FamilyMember::class);
     }
+
+    public function transactions(){
+        return $this->hasMany(transaction::class);
+    }
 }

@@ -165,7 +165,16 @@ class TenantsController extends Controller
 
     public function familyMemberStore(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate(
+            [
+                'last_name.*' => 'required',
+                'first_name.*' => 'required',
+                'middle_name.*' => 'required',
+                'birth_date.*' => 'required',
+                'birth_place.*' => 'required',
+                'province.*' => 'required',
+                'relationship_id.*' => 'required' 
+            ]);
 
         foreach($request->last_name as $v => $item)
         {

@@ -36,6 +36,13 @@
                                 </div>
                                 <div class="card-body">
                                     {!! Form::open(['action' => 'DuesController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'id' => 'getHere']) !!}
+                                    <div class="form-row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                            <label>Transaction Sequence No. : <b>{{$latest + 1}}</b></label>
+                                            </div>
+                                        </div>
+                                    </div>
                                         <div class="form-row">
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">
@@ -68,7 +75,20 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+                                        <div class="form-group">
+                                            <div class="form-row mx-auto">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                    {{Form::text('block', '', ['class' => ($errors->has('block')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Block', 'id' => 'block', 'readonly' => true])}}
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                    {{Form::text('lot', '', ['class' => ($errors->has('lot')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Lot', 'id' => 'lot', 'readonly' => true])}}     
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                    {{Form::text('street', '', ['class' => ($errors->has('street')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Street', 'id' => 'street', 'readonly' => true])}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="here"></div>
                                         <div class="col-xl-12 col-lg-12 my-3">
                                             <div class="card">
                                                 <div class="card-header pb-0">
@@ -231,7 +251,12 @@ $('#search').autocomplete({
         $('#lastName').val(ui.item.last_name);
         $('#firstName').val(ui.item.first_name);
         $('#middleName').val(ui.item.middle_name);
-    }  
+        $('#block').val(ui.item.block);
+        $('#lot').val(ui.item.lot);
+        $('#street').val(ui.item.street);
+    },
+
+    
 });
 
 $('tbody').delegate('.amount', 'keyup', function(){

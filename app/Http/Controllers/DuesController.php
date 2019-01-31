@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Due;
 use App\Tenant;
 use App\DueTransaction;
+use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use DB;
@@ -20,6 +21,7 @@ class DuesController extends Controller
      */
     public function index(Due $due)
     {
+       
         $tenants = Tenant::all();
         $dues = Due::orderBy('created_at', 'desc')->paginate(4);
         return view('dues.index', compact('tenants', 'dues'));
@@ -31,9 +33,20 @@ class DuesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {  
+         if(Transaction::count() != 0)
+        {
+            $latest = Transaction::latest()->first()->id;
+            
+        }
+        else
+        {
+            $latest = Transaction::latest()->first();
+        }
+
         $tenants = Tenant::pluck('id', 'id');
-        return view ('dues.create')->with('tenants', $tenants);
+        return view ('dues.create', compact('tenants', 'latest'));
+       
     }
 
     /**
@@ -44,7 +57,18 @@ class DuesController extends Controller
      */
     public function store(Request $request)
     {
-        dd($data = $request->all());
+        $data = $request->validate(
+            [
+                'tenant_id' => 'required',
+                'last_name' => 'required',
+                'first_name' => 'required',
+                'middle_name' => 'required',
+                'month.*' => 'required',
+                'amount.*' => 'required',
+                'total_amount' => 'required',
+                'tender' => 'required',
+                'change' => 'required'
+            ]);;
         
         $id = Due::create($data)->id;
             if(count($request->month) > 0)
@@ -62,6 +86,15 @@ class DuesController extends Controller
                     DueTransaction::insert($list);
                 }
             }
+
+            $id = auth()->id();
+
+            Transaction::create([
+                'cashier' =>  $id,
+                'transactionFor' => 'dues',
+                'tenant_id' => $request->input('tenant_id'),
+                'amount' => $request->input('total_amount')
+            ]);
             return redirect('/dues')->with('success','Payment Added For This User');        
     }
 
@@ -124,7 +157,7 @@ class DuesController extends Controller
         $term = $request->term;
         $data = Tenant::where('last_name', 'LIKE', '%'.$term.'%')
                         ->orWhere('first_name', 'LIKE', '%'.$term.'%')
-                        ->selectRaw('id, CONCAT(first_name, " ", last_name) AS full_name,first_name,last_name, middle_name')
+                        ->selectRaw('id, CONCAT(first_name, " ", last_name) AS full_name,first_name,last_name, middle_name, block, lot, street')
                         ->get()->take(10);
         $results = array();
         
@@ -134,11 +167,21 @@ class DuesController extends Controller
             'value' => $v->full_name,
             'first_name' => $v->first_name,
             'last_name' => $v->last_name,
-            'middle_name' => $v->middle_name
+            'middle_name' => $v->middle_name,
+            'block' => $v->block,
+            'lot' => $v->lot,
+            'street' => $v->street
             ];  
         }
 
         return response()->json($results);
+    }
+
+    public function dueDetails($id)
+    {
+    $due = DB::table('dues')->where('tenant_id', $id)->get();
+
+    return ["due" => $due];
     }
 
 }
