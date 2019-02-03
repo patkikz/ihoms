@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+{!! Charts::styles() !!}
 <div id="wrapper">
 
     @include('inc.sidebar')
@@ -84,4 +84,33 @@
         </div>
     </div>
 </div>
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Daily Transactions</div>
+    
+                    <div class="card-body">    
+                        {!! $chart->html()!!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Daily Transactions</div>
+                    <div class="card-body">    
+                        {!! $bar->html()!!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{!! Charts::scripts() !!}
+{!! $chart->script() !!}
+{!! $bar->script() !!}
 @endsection

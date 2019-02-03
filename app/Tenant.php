@@ -36,4 +36,22 @@ class Tenant extends Model
     public function arrears(){
         return $this->hasMany(Arrear::class);
     }
+
+    public function stickerTransactions(){
+        return $this->hasMany(StickerTransaction::class);
+    }
+    
+    public function carStickers(){
+        return $this->hasMany(CarSticker::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function reservationTransactions()
+    {
+        return $this->hasMany(ReservationTransaction::class);
+    }
 }

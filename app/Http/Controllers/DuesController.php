@@ -47,10 +47,10 @@ class DuesController extends Controller
         }
 
         $payment = PaymentManagement::where('id', 1)->get();
-        $transactions = DueTransaction::where('tenant_id', 'id')->get();
+        // $transactions = DueTransaction::where('tenant_id', 'id')->get();
         $months = DB::table('months')->pluck('name','id');
         $tenants = Tenant::pluck('id', 'id');
-        return view ('dues.create', compact('tenants', 'latest', 'transactions', 'months', 'payment'));
+        return view ('dues.create', compact('tenants', 'latest', 'months', 'payment'));
        
     }
 

@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\CarSticker;
 use App\Tenant;
+use App\VehicleType;
+use App\Transaction;
+use App\StickerTransaction;
+use DB;
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 
 class CarStickersController extends Controller
@@ -15,7 +21,18 @@ class CarStickersController extends Controller
      */
     public function index()
     {
-        return view('car-stickers.index');
+        if(Transaction::count() != 0)
+        {
+            $latest = Transaction::latest()->first()->id;
+            
+        }
+        else
+        {
+            $latest = Transaction::latest()->first();
+        }
+
+        $types = VehicleType::pluck('vehicle_type', 'id');
+        return view('car-stickers.index', compact('types', 'latest'));
     }
 
     /**
@@ -36,7 +53,50 @@ class CarStickersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate(
+            [
+                'tenant_id' => 'required',
+                'date_from' => 'required',
+                'date_to' => 'required',
+                'vehicle_type.*' => 'required',
+                'amount.*' => 'required',
+                'plate_no.*' => 'required',
+                'total_amount' => 'required',
+                'tender' => 'required',
+                'change' => 'required'
+            ]);;
+
+            $id = CarSticker::create($data)->id;
+
+            if(count($request->vehicle_type) > 0)
+            {
+                foreach ($request->vehicle_type as $key => $value)
+                {
+                    $list = array(
+                        'tenant_id' => $request->input('tenant_id'),
+                        'sticker_id' => $id,
+                        'vehicle_type' => $request->vehicle_type[$key],
+                        'amount' => $request->amount[$key],
+                        'plate_no' => $request->plate_no[$key],
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now()
+                    );
+                   StickerTransaction::insert($list);
+                }
+            }
+
+            $cashier = auth()->id();
+
+            Transaction::create([
+                'cashier' =>  $cashier,
+                'transactionFor' => 'car-stickers',
+                'tenant_id' => $request->input('tenant_id'),
+                'amount' => $request->input('total_amount'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
+        
+            return redirect('car-stickers')->withSuccess('Car Sticker Added!');
     }
 
     /**
@@ -109,5 +169,15 @@ class CarStickersController extends Controller
         }
 
         return response()->json($results);
+    }
+
+    public function typeDetails($id)
+    {
+
+    $type = DB::table('vehicle_types')->where('id', $id)->first();
+
+    return ["type" => $type];
+
+    
     }
 }

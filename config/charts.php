@@ -11,5 +11,11 @@ return [
     | while creating the chart to ignore this value.
     |
     */
-    'default_library' => 'Chartjs',
+    'default' => [
+        'type' => 'line',
+        'library' => 'highcharts',
+        'responsive' => true,
+        'height' => 400,
+        'width' => 500,
+    ]
 ];

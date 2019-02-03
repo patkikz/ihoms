@@ -44,9 +44,13 @@ Route::get('dues/get-tenant-details/{id}','DuesController@tenantDetails');
 Route::get('dues/autocomplete', 'DuesController@autocomplete');
 Route::resource('dues', 'DuesController')->middleware('checkuserrole');
 
+Route::get('car-stickers/get-type-details/{id}', 'CarStickersController@typeDetails');
 Route::get('car-stickers/autocomplete', 'CarStickersController@autoComplete');
 Route::resource('car-stickers', 'CarStickersController')->middleware('checkuserrole');
 
+
+Route::get('reservations/get-type-details/{id}', 'ReservationsController@typeDetails');
+Route::get('reservations/autocomplete', 'ReservationsController@autocomplete');
 Route::resource('reservations', 'ReservationsController')->middleware('checkuserrole');
 
 
