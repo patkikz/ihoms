@@ -37,6 +37,9 @@
                                 <div class="card-body">
                                     {!! Form::open(['action' => 'DuesController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'id' => 'getHere']) !!}
                                     {{Form::hidden('domain', '', ['id' => 'domain'])}}
+                                    @foreach ($payment as $p)
+                                        
+                                    @endforeach
                                     <div class="form-row">
                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                             <div class="form-group">
@@ -65,7 +68,7 @@
                                             </div>
                                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                                                 <div class="form-group">
-                                                    {{Form::text('middle_name', '', ['class' => ($errors->has('last_name')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0', 'placeholder' => 'Middle Name','id' => 'middleName', 'readonly' => true])}}
+                                                    {{Form::text('middle_name', '', ['class' => ($errors->has('middle_name')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0', 'placeholder' => 'Middle Name','id' => 'middleName', 'readonly' => true])}}
                                                 </div>
                                             </div>
                                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
@@ -110,13 +113,23 @@
                                                 </div>
                                                 <div class="card-body">
                                                         <table class="table table-striped table-sm" style="width:100%;" id="myTable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td><b>Month</b></td>
+                                                                    <td><b>Amount Due</b></td>
+                                                                    <td colspan="2"><b>Payment</b></td>
+                                                                </tr>
+                                                            </thead>
                                                             <tbody id = "addHere">
                                                                 <tr>
                                                                     <td>
                                                                         {{Form::select('month[]', $months, null, ['placeholder' => 'Please pick one', 'class' => 'form-control input-label rounded-0'])}}
                                                                     </td>
+                                                                    <td>                                                                        
+                                                                        {{Form::number('amountToPay[]', $p->amount, ['class' => 'form-control input-label rounded-0', 'readonly' => true])}}
+                                                                    </td>
                                                                     <td>
-                                                                        {{Form::number('amount[]', '',['placeholder' => 'Amount', 'class' => 'form-control input-label rounded-0 amount'])}}
+                                                                        {{Form::number('actualAmountPaid[]', '',['placeholder' => 'Amount', 'class' => 'form-control input-label rounded-0 amount'])}}
                                                                     </td>
                                                                     <td>
                                                                         <button type="button" id="add" class="btn btn-primary rounded-0 primary-bg">+</button>
@@ -125,6 +138,7 @@
                                                             </tbody>
                                                             <tfoot>
                                                                 <tr>
+                                                                    <td></td>
                                                                     <td>Total</td>
                                                                     <td>
                                                                         <b class="total"></b>
@@ -148,25 +162,25 @@
                                                         <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body pb-0">
+                                                    <div class="modal-body pb-0 ">
                                                       
-                                                            <div class="form-row">
+                                                            <div class="form-row parent">
                                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                                     <div class="form-group">
-                                                                        <label>AMOUNT</label>
+                                                                        <label>TOTAL</label>
                                                                         {{Form::number('total_amount', '', ['class' => ($errors->has('amount')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0 total_amount', 'placeholder' => 'Amount'])}}
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                                     <div class="form-group">
+                                                                        <label>TENDER</label>
                                                                         {{Form::number('tender', '', ['class' => ($errors->has('tender')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0 tender', 'placeholder' => 'Tender'])}}
-                                                                        
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                                     <div class="form-group">
                                                                         <label>CHANGE</label>
-                                                                        {{Form::number('change', '', ['class' => ($errors->has('change')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0 change', 'placeholder' => 'Change'])}}
+                                                                        {{Form::number('change', '', ['class' => ($errors->has('change')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0 change', 'placeholder' => 'Change', 'readonly' => true])}}
                                                                     </div>
                                                                 </div>
                                                                 <div class="d-flex w-100 justify-content-end mt-3">
@@ -222,16 +236,18 @@ $.ajax({
 
         if(data.due.length > 0)
         {
+            
             $(data.due).each(function(key, value){
+                var stat = Number(value.amountToPay - value.actualAmountPaid);
                 tr += '<tr>';
                         tr+= '<td>'+value.id+'</td>';
                         tr += '<td>'+value.name+'</td>';
-                        tr += '<td>'+value.amount+'</td>';
-                        if (value.amount != 0){
-                            tr += '<td>PAID</td>';
+                        tr += '<td>'+value.actualAmountPaid+'</td>';
+                        if (stat != 0){
+                            tr += '<td>NOT FULLY PAID</td>';
                         }
                         else{
-                            tr += '<td>UNPAID</td>'
+                            tr += '<td>PAID</td>'
                         }
                 tr += '</tr>';
             });
@@ -249,7 +265,7 @@ $.ajax({
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
-                            //if fails
+        console.log('Something Went Wrong!');             //if fails
     }
     
     });
@@ -273,7 +289,10 @@ $('#search').autocomplete({
     }
 });
 
-$('tbody').delegate('.amount', 'keyup', function(){
+
+
+$(document).ready(function(){
+    $('tbody').delegate('.amount', 'keyup', function(){
     var sum = 0;
      $('tr').each(function()
     {
@@ -284,9 +303,23 @@ $('tbody').delegate('.amount', 'keyup', function(){
                 sum += Number(amount);
             }
         });
-        $('.total', this).html(sum)
+        $('.total', this).html(sum);
     });
+
+    $("div.parent").delegate('.total_amount, .tender', 'keyup', function(){
+  var g = $(this).parent().parent().parent();
+    var total_amount = g.find('.total_amount').val();
+    var tender = g.find('.tender').val();
+    change = (tender - total_amount);
+    g.find('.change').val(change);
+  });
+  
 })
+   
+  
+  
+});
+
 
 $(document).ready(function(){
     var count = 1;
@@ -298,7 +331,10 @@ $(document).ready(function(){
         html_code += '{{Form::selectMonth('month[]', '', ['placeholder' => 'Please pick one', 'class' => 'form-control input-label rounded-0'])}}';
         html_code +="</td>";
         html_code += "<td>";
-        html_code += '{{Form::number('amount[]', '',['placeholder' => 'Amount', 'class' => 'form-control input-label rounded-0 amount'])}}';
+        html_code += '{{Form::number('amountToPay[]', $p->amount,['placeholder' => 'Amount', 'class' => 'form-control input-label rounded-0', 'readonly' => true])}}';
+        html_code +="</td>";
+        html_code += "<td>";
+        html_code += '{{Form::number('actualAmountPaid[]', '',['placeholder' => 'Amount', 'class' => 'form-control input-label rounded-0 amount'])}}';
         html_code +="</td>";
         html_code += "<td>";
         html_code += '<button type="button" name="remove" data-row="row'+count+'" href="#" class="btn btn-danger rounded-0 remove">x</button>';

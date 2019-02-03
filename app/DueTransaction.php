@@ -17,4 +17,8 @@ class DueTransaction extends Model
     public function tenants(){
         return $this->belongsTo(Tenant::class, 'tenant_id');
     }
+
+    public function arrear(){
+        return $this->hasOne(Arrear::class);
+    }
 }

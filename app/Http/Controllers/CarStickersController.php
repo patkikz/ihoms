@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CarSticker;
+use App\Tenant;
 use Illuminate\Http\Request;
 
 class CarStickersController extends Controller
@@ -81,5 +82,32 @@ class CarStickersController extends Controller
     public function destroy(CarSticker $carSticker)
     {
         //
+    }
+    
+    public function autoComplete(Request $request)
+    {
+        $term = $request->term;
+        $data = Tenant::selectRaw('id, CONCAT(first_name, " ", last_name) AS full_name,first_name,last_name, middle_name, block, lot, street')
+                        ->where('withParking', '1')
+                        // ->orWhere('last_name', 'LIKE', '%'.$term.'%')
+                        // ->orWhere('first_name', 'LIKE', '%'.$term.'%')
+                        ->get()->take(10);
+
+        $results = array();
+        
+        foreach($data as $key => $v )
+        {
+            $results[] = ['id' => $v->id,
+            'value' => $v->full_name,
+            'first_name' => $v->first_name,
+            'last_name' => $v->last_name,
+            'middle_name' => $v->middle_name,
+            'block' => $v->block,
+            'lot' => $v->lot,
+            'street' => $v->street
+            ];  
+        }
+
+        return response()->json($results);
     }
 }

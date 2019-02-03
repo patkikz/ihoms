@@ -30,6 +30,10 @@ class Tenant extends Model
     }
 
     public function transactions(){
-        return $this->hasMany(transaction::class);
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function arrears(){
+        return $this->hasMany(Arrear::class);
     }
 }

@@ -57,6 +57,34 @@
                                             </div>
                                         </div>
                                         <div class="form-row">
+                                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                                    <div class="form-group">
+                                                        {{Form::text('last_name', '', ['class' => ($errors->has('last_name')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0', 'placeholder' => 'Last Name', 'id' => 'lastName', 'readonly' => true])}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                                    <div class="form-group">
+                                                        {{Form::text('first_name', '', ['class' => ($errors->has('first_name')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0', 'placeholder' => 'First Name', 'id' => 'firstName', 'readonly' => true])}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                                    <div class="form-group">
+                                                        {{Form::text('middle_name', '', ['class' => ($errors->has('middle_name')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0', 'placeholder' => 'Middle Name','id' => 'middleName', 'readonly' => true])}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                    {{Form::text('block', '', ['class' => ($errors->has('block')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Block', 'id' => 'block', 'readonly' => true])}}
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                    {{Form::text('lot', '', ['class' => ($errors->has('lot')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Lot', 'id' => 'lot', 'readonly' => true])}}     
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                    {{Form::text('street', '', ['class' => ($errors->has('street')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Street', 'id' => 'street', 'readonly' => true])}}
+                                                </div>
+                                            </div>
+                                        <div class="form-row">
                                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label>DATE OF RESERVATION <i class="fa fa-calendar"></i></label>

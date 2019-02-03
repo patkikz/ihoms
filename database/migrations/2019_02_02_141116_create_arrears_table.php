@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDueTransactionsTable extends Migration
+class CreateArrearsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateDueTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('due_transactions', function (Blueprint $table) {
+        Schema::create('arrears', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('month');
-            $table->integer('amountToPay');
-            $table->integer('actualAmountPaid');
             $table->unsignedInteger('tenant_id');
-            $table->unsignedInteger('due_id');
-            
+            $table->unsignedInteger('month')->nullable();
+            $table->integer('arrear');
+
             $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
-            $table->foreign('due_id')->references('id')->on('dues')->onDelete('cascade');
-            
+            $table->foreign('month')->references('id')->on('months')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ class CreateDueTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('due_transactions');
+        Schema::dropIfExists('arrears');
     }
 }

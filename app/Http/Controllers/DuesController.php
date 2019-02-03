@@ -6,6 +6,8 @@ use App\Due;
 use App\Tenant;
 use App\DueTransaction;
 use App\Transaction;
+use App\PaymentManagement;
+use App\Arrear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use DB;
@@ -43,10 +45,12 @@ class DuesController extends Controller
         {
             $latest = Transaction::latest()->first();
         }
+
+        $payment = PaymentManagement::where('id', 1)->get();
         $transactions = DueTransaction::where('tenant_id', 'id')->get();
         $months = DB::table('months')->pluck('name','id');
         $tenants = Tenant::pluck('id', 'id');
-        return view ('dues.create', compact('tenants', 'latest', 'transactions', 'months'));
+        return view ('dues.create', compact('tenants', 'latest', 'transactions', 'months', 'payment'));
        
     }
 
@@ -65,7 +69,8 @@ class DuesController extends Controller
                 'first_name' => 'required',
                 'middle_name' => 'required',
                 'month.*' => 'required',
-                'amount.*' => 'required',
+                'amountToPay.*' => 'required',
+                'actualAmountPaid.*' => 'required',
                 'total_amount' => 'required',
                 'tender' => 'required',
                 'change' => 'required'
@@ -80,7 +85,8 @@ class DuesController extends Controller
                         'tenant_id' => $request->input('tenant_id'),
                         'due_id' => $id,
                         'month' => $request->month[$key],
-                        'amount' => $request->amount[$key],
+                        'amountToPay' => $request->amountToPay[$key],
+                        'actualAmountPaid' => $request->actualAmountPaid[$key],
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now()
                     );
@@ -94,8 +100,42 @@ class DuesController extends Controller
                 'cashier' =>  $id,
                 'transactionFor' => 'dues',
                 'tenant_id' => $request->input('tenant_id'),
-                'amount' => $request->input('total_amount')
+                'amount' => $request->input('total_amount'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]);
+            
+            $x = $request->input('amountToPay.*');
+            $y = $request->input('actualAmountPaid.*');
+
+          
+
+            if(count($request->month) > 0)
+            {
+                foreach ($request->month as $key => $value)
+                {
+                    $x = $request->amountToPay[$key];
+
+                    $y = $request->actualAmountPaid[$key];
+
+                    $arrear = ((int)$x - (int)$y);
+
+                    if($arrear > 0)
+                    {
+                        $list = array(
+                            'tenant_id' => $request->input('tenant_id'),
+                            'month' => $request->month[$key],
+                            'arrear' => $arrear,
+                            'created_at' => Carbon::now(),
+                            'updated_at' => Carbon::now()
+                        );
+                        Arrear::insert($list);
+                    }
+                    
+                }
+            }
+
+
             return redirect('/dues')->with('success','Payment Added For This User');        
     }
 
@@ -183,7 +223,7 @@ class DuesController extends Controller
 
     $due = DB::table('due_transactions')->where('tenant_id', $id)
     ->join('months' , 'months.id' , 'due_transactions.month')
-    ->get();
+    ->get()->take(12);
 
 
     return ["due" => $due];
