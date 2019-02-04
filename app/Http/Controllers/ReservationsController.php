@@ -21,8 +21,19 @@ class ReservationsController extends Controller
      */
     public function index()
     {
+        
+        if(Transaction::count() != 0)
+        {
+            $latest = Transaction::latest()->first()->id;
+            
+        }
+        else
+        {
+            $latest = Transaction::latest()->first();
+        }
+
         $types = ReservationType::pluck('reservation_type', 'id');
-        return view('reservations.index', compact('types'));
+        return view('reservations.index', compact('types', 'latest'));
     }
 
     /**
@@ -69,7 +80,7 @@ class ReservationsController extends Controller
         $cashier = auth()->id();
 
         Transaction::create([
-            'transactionFor' => 'reservations',
+            'transactionFor' => 'clubhouse reservations',
             'amount' => $request['total_amount'],
             'tenant_id' => $request['tenant_id'],
             'cashier' => $cashier,
@@ -77,7 +88,7 @@ class ReservationsController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        return redirect('reservations')->withsSuccess('Reservation is added!');
+        return redirect('reservations')->withSuccess('Reservation is added!');
     }
 
     /**

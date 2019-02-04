@@ -14,6 +14,7 @@
                     <a href="/dues">Monthly Dues</a>
                     <a href="/car-stickers">Car Stickers</a>
                     <a href="/reservations">Club House Reservation</a>
+                    <a href="/arrears">Arrears</a>
                 </div>
             </li>
             <li><a href="/expenses">Expenses</a></li>

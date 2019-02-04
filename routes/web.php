@@ -53,6 +53,10 @@ Route::get('reservations/get-type-details/{id}', 'ReservationsController@typeDet
 Route::get('reservations/autocomplete', 'ReservationsController@autocomplete');
 Route::resource('reservations', 'ReservationsController')->middleware('checkuserrole');
 
+Route::get('arrears/get-arrear-details/{id}', 'ArrearsController@arrearDetails');
+Route::get('arrears/autocomplete', 'ArrearsController@autocomplete');
+Route::resource('arrears', 'ArrearsController')->middleware('checkuserrole');
+
 
 Auth::routes(['verify' => true ,'register' => false]);
 

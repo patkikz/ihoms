@@ -35,11 +35,11 @@
                                     <h4>Monthly Dues</h4>
                                 </div>
                                 <div class="card-body">
-                                    {!! Form::open(['action' => 'DuesController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'id' => 'getHere']) !!}
+                                    {!! Form::open(['action' => 'ArrearsController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'id' => 'getHere']) !!}
                                     {{Form::hidden('domain', '', ['id' => 'domain'])}}
-                                    @foreach ($payment as $p)
+                                    {{-- @foreach ($payment as $p)
                                         
-                                    @endforeach
+                                    @endforeach --}}
                                     <div class="form-row">
                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                             <div class="form-group">
@@ -96,9 +96,8 @@
                                             <table class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <td>Due Transaction ID</td>
                                                         <td>Month</td>
-                                                        <td>Amount</td>
+                                                        <td>Arrear</td>
                                                         <td>Status</td>
                                                     </tr>
                                                 </thead>
@@ -109,24 +108,24 @@
                                         <div class="col-xl-12 col-lg-12 my-3">
                                             <div class="card">
                                                 <div class="card-header pb-0">
-                                                    <h4>Payment Transactions</h4>
+                                                    <h4>Arrear Transactions</h4>
                                                 </div>
                                                 <div class="card-body">
                                                         <table class="table table-striped table-sm" style="width:100%;" id="myTable">
                                                             <thead>
                                                                 <tr>
                                                                     <td><b>Month</b></td>
-                                                                    <td><b>Amount Due</b></td>
+                                                                    <td><b>Balance</b></td>
                                                                     <td colspan="2"><b>Payment</b></td>
                                                                 </tr>
                                                             </thead>
                                                             <tbody id = "addHere">
                                                                 <tr>
                                                                     <td>
-                                                                        {{Form::select('month[]', $months, null, ['placeholder' => 'Please pick one', 'class' => 'form-control input-label rounded-0'])}}
+                                                                        {{Form::select('month[]', $months ,null, ['placeholder' => 'Please pick one', 'class' => 'form-control input-label rounded-0', 'id' => 'monthHere'])}}
                                                                     </td>
                                                                     <td>                                                                        
-                                                                        {{Form::number('amountToPay[]', $p->amount, ['class' => 'form-control input-label rounded-0', 'readonly' => true])}}
+                                                                        {{Form::number('amountToPay[]', '',['class' => 'form-control input-label rounded-0', 'readonly' => true, 'id' => 'amountHere'])}}
                                                                     </td>
                                                                     <td>
                                                                         {{Form::number('actualAmountPaid[]', '',['placeholder' => 'Amount', 'class' => 'form-control input-label rounded-0 amount'])}}
@@ -157,7 +156,7 @@
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content rounded-0 border-0">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Monthly Dues</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Arrear Payment</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -218,32 +217,35 @@
         }
 
 var domain = $('#domain').val();
-var getTenantTransactions = function(id){
+var g = $('#amountHere');
+var d = $('#monthHere')
+var getArrearTransactions = function(id){
 var tb = " ";
+
 $.ajax({
-    url: domain + '/dues/get-due-details/'+id,
+    url: domain + '/arrears/get-arrear-details/'+id,
     type: "GET",
     cache: false,
     success: function (data, textStatus, jqXHR)
     {
-        $(data.due).each(function(key,value)
+        $(data.arrear).each(function(key,value)
         {
             console.log(value);
+
         var tr = "";
 
         //Clear muna yung data
         $('#here').empty();
 
-        if(data.due.length > 0)
-        {
-            
-            $(data.due).each(function(key, value){
-                var stat = Number(value.amountToPay - value.actualAmountPaid);
+        if(data.arrear.length > 0)
+        {   
+            $(data.arrear).each(function(key, value){
+                g.val(value.arrear);
+                d.val(value.month);
                 tr += '<tr>';
-                        tr+= '<td>'+value.id+'</td>';
                         tr += '<td>'+value.name+'</td>';
-                        tr += '<td>'+value.actualAmountPaid+'</td>';
-                        if (stat != 0){
+                        tr += '<td>'+value.arrear+'</td>';
+                        if (value.arrear != 0){
                             tr += '<td>NOT FULLY PAID</td>';
                         }
                         else{
@@ -271,8 +273,10 @@ $.ajax({
     });
 
 }
+
+
 $('#search').autocomplete({
-    source : "{{ url('dues/autocomplete') }}",
+    source : "{{ url('arrears/autocomplete') }}",
     minLength:1,
     autoFocus: true,
     type:'GET',
@@ -285,7 +289,7 @@ $('#search').autocomplete({
         $('#lot').val(ui.item.lot);
         $('#street').val(ui.item.street);
         
-        getTenantTransactions(ui.item.id);
+        getArrearTransactions(ui.item.id);
     }
 });
 
@@ -328,10 +332,10 @@ $(document).ready(function(){
 
         var html_code = "<tr id='row"+count+"'>";
         html_code += "<td>";
-        html_code += ' {{Form::select('month[]', $months, null, ['placeholder' => 'Please pick one', 'class' => 'form-control input-label rounded-0'])}}';
+        html_code += ' {{Form::select('month[]', $months ,null, ['placeholder' => 'Please pick one', 'class' => 'form-control input-label rounded-0', 'id' => 'monthHere'])}}';
         html_code +="</td>";
         html_code += "<td>";
-        html_code += '{{Form::number('amountToPay[]', $p->amount,['placeholder' => 'Amount', 'class' => 'form-control input-label rounded-0', 'readonly' => true])}}';
+        html_code += '{{Form::number('amountToPay[]','',['placeholder' => 'Amount', 'class' => 'form-control input-label rounded-0', 'readonly' => true])}}';
         html_code +="</td>";
         html_code += "<td>";
         html_code += '{{Form::number('actualAmountPaid[]', '',['placeholder' => 'Amount', 'class' => 'form-control input-label rounded-0 amount'])}}';

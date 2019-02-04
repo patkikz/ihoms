@@ -37,7 +37,13 @@
                                 <div class="card-body">
                                     {!! Form::open(['action' => 'ReservationsController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'id' => 'getHere']) !!}
                                         {{Form::hidden('domain', '', ['id' => 'domain'])}}
-       
+                                        <div class="form-row">
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="form-group">
+                                                <label>Transaction Sequence No. : <b>{{$latest + 1}}</b></label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="form-row">
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group">

@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RelationshipsTableSeeder::class);
         $this->call(PaymentManagementSeeder::class);
         $this->call(ReservationTypeSeeder::class);
-
+        $this->call(PaymentsManagementSeeder::class);
        
     }
 }

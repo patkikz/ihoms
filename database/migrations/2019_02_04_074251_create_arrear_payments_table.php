@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArrearsTable extends Migration
+class CreateArrearPaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateArrearsTable extends Migration
      */
     public function up()
     {
-        Schema::create('arrears', function (Blueprint $table) {
+        Schema::create('arrear_payments', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('tenant_id');
-            $table->unsignedInteger('month')->nullable();
-            $table->integer('arrear');
-            $table->softDeletes();
-            $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
-            $table->foreign('month')->references('id')->on('months')->onDelete('cascade');
+            $table->integer('total_amount');
+            $table->integer('tender');
+            $table->integer('change');
             $table->timestamps();
+
+            $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateArrearsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('arrears');
+        Schema::dropIfExists('arrear_payments');
     }
 }

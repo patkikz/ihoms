@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Arrear extends Model
 {
+    use SoftDeletes;
+    
     protected $table = 'arrears';
 
     protected $fillable = [

@@ -54,4 +54,14 @@ class Tenant extends Model
     {
         return $this->hasMany(ReservationTransaction::class);
     }
+
+    public function arrearPayments()
+    {
+        return $this->hasMany(ArrearPayment::class);
+    }
+    
+    public function arrearTransactions()
+    {
+        return $this->hasMany(ArrearTransaction::class);
+    }
 }
