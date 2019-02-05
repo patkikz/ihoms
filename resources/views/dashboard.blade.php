@@ -79,36 +79,38 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row my-3">
+                        <div class="col-md-8">
+                            <div class="card rounded-0">
+                                <div class="card-header">Daily Transactions</div>
+                
+                                <div class="card-body">    
+                                    {!! $chart->html()!!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card rounded-0">
+                                <div class="card-header">Daily Transactions</div>
+                                    <div class="card-body">    
+                                        {!! $bar->html()!!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Daily Transactions</div>
-    
-                    <div class="card-body">    
-                        {!! $chart->html()!!}
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 <br>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Daily Transactions</div>
-                    <div class="card-body">    
-                        {!! $bar->html()!!}
-                    </div>
-                </div>
-            </div>
-        </div>
+    
     </div>
 {!! Charts::scripts() !!}
 {!! $chart->script() !!}

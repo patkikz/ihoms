@@ -1,3 +1,4 @@
+<!-- Sidebar -->
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
@@ -33,3 +34,4 @@
         @endcan
     </ul>
 </div>
+<!-- /#sidebar-wrapper -->

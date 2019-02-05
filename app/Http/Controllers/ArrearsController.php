@@ -114,7 +114,7 @@ class ArrearsController extends Controller
                     {
                         DB::table('arrears')
                         ->where(['tenant_id' => $tenant, 'month' => $month])
-                        ->update(['arrear' => $arrear , 'deleted_at' =>Carbon::now()]);
+                        ->update(['arrear' => $arrear , 'hasPaid' => '1']);
 
                         DB::table('due_transactions')
                         ->where(['tenant_id' => $tenant, 'month' => $month])
@@ -213,7 +213,7 @@ class ArrearsController extends Controller
     public function arrearDetails($id)
     {
 
-    $arrear = DB::table('arrears')->where(['tenant_id' =>$id, 'deleted_at' => null])    
+    $arrear = DB::table('arrears')->where(['tenant_id' =>$id, 'hasPaid' => '0'])    
     ->join('months' , 'months.id' , 'arrears.month')
     ->get()->take(12);
 

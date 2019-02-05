@@ -18,7 +18,7 @@ class CreateArrearsTable extends Migration
             $table->unsignedInteger('tenant_id');
             $table->unsignedInteger('month')->nullable();
             $table->integer('arrear');
-            $table->softDeletes();
+            $table->enum('hasPaid', [1,0])->default(0);
             $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
             $table->foreign('month')->references('id')->on('months')->onDelete('cascade');
             $table->timestamps();

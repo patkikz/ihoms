@@ -1200,13 +1200,20 @@ body.nobg .section1 {
 
 /* DASHBOARD */
 
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+
 #wrapper {
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  background-color: #f5f5f5;
 }
 
 #wrapper.toggled {
@@ -1218,6 +1225,7 @@ body.nobg .section1 {
   position: fixed;
   left: 250px;
   width: 0;
+  top: 55px;
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
@@ -1243,7 +1251,6 @@ body.nobg .section1 {
   margin-right: -250px;
 }
 
-
 /* Sidebar Styles */
 
 .sidebar-nav {
@@ -1258,43 +1265,67 @@ body.nobg .section1 {
 .sidebar-nav li {
   text-indent: 20px;
   line-height: 40px;
-  text-align: left;
 }
 
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
-  color: #fff;
-  text-align: left;
+  color: #FFF;
 }
 
 .sidebar-nav li a:hover {
   text-decoration: none;
   color: #fff;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.2);
 }
 
-.sidebar-nav li a:active, .sidebar-nav li a:focus {
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
   text-decoration: none;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.2);
 }
 
-.sidebar-nav>.sidebar-brand {
+.sidebar-nav > .sidebar-brand {
   height: 65px;
   font-size: 18px;
   line-height: 60px;
-  padding-top: 20px;
-  margin-bottom: 40px;
+  margin: 30px 0;
 }
 
-.sidebar-nav>.sidebar-brand a {
-  color: #fff;
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
 }
 
-.sidebar-nav>.sidebar-brand a:hover {
+.sidebar-nav > .sidebar-brand a:hover {
   color: #fff;
   background: none;
+}
+
+@media(min-width:768px) {
+  #wrapper {
+      padding-left: 250px;
+  }
+
+  #wrapper.toggled {
+      padding-left: 0;
+  }
+
+  #sidebar-wrapper {
+      width: 250px;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+      width: 0;
+  }
+
+  #page-content-wrapper {
+      padding: 20px;
+      position: relative;
+  }
+
+  #wrapper.toggled #page-content-wrapper {
+      position: relative;
+      margin-right: 0;
+  }
 }
 
 .dropdown-container {
@@ -1304,30 +1335,6 @@ body.nobg .section1 {
 
 .dropdown-container a{
   padding-left: 10px;
-}
-
-
-@media(min-width:768px) {
-  #wrapper {
-    padding-left: 0;
-  }
-  #wrapper.toggled {
-    padding-left: 250px;
-  }
-  #sidebar-wrapper {
-    width: 0;
-  }
-  #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
-  }
-  #page-content-wrapper {
-    padding: 20px;
-    position: relative;
-  }
-  #wrapper.toggled #page-content-wrapper {
-    position: relative;
-    margin-right: 0;
-  }
 }
 
 .page-header {
