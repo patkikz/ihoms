@@ -11,11 +11,5 @@ return [
     | while creating the chart to ignore this value.
     |
     */
-    'default' => [
-        'type' => 'line',
-        'library' => 'highcharts',
-        'responsive' => true,
-        'height' => 400,
-        'width' => 500,
-    ]
+    'default_library' => 'Highcharts',
 ];

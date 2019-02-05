@@ -59,7 +59,7 @@ Route::resource('arrears', 'ArrearsController')->middleware('checkuserrole');
 
 
 Auth::routes(['verify' => true ,'register' => false]);
-
+Route::get('/dashboard/chart','DashboardController@chart');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('verified');
 
 // Route::get('/home', 'HomeController@index')->name('dashboard')->middleware('verified');

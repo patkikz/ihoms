@@ -113,7 +113,7 @@
                                     <div class="form-row mx-auto">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
                                             {{ Form::radio('payment_mode', $tenant->payment_mode) }}
-                                            <label class="mt-2">Mortcage</label>
+                                            <label class="mt-2">Mortgage</label>
                                             <br />
                                             {{ Form::radio('payment_mode', $tenant->payment_mode) }}
                                             <label class="mt-2">Fully Paid</label>

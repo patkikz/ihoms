@@ -7,7 +7,8 @@ use App\User;
 use App\Transaction;
 use App\Tenant;
 use App\DueTransaction;
-use Charts;
+use App\Charts\DailyChart;
+use Carbon\Carbon;
 use Alert;
 use DB;
 
@@ -35,32 +36,46 @@ class DashboardController extends Controller
         $user = User::find($user_id);
 
         
-        // $data = collect([]); // Could also be an array
+    $data = collect([]); // Could also be an array
+    $today = today(); 
+    $dates = []; 
 
+    for($i=1; $i <  $today->daysInMonth +1 ; $i++) {
+        $dates[] = \Carbon\Carbon::createFromDate($today->year, $today->month, $i)->format('F-d-Y');
+        $data->push(Transaction::whereDate('created_at', $today->startOfMonth()->addDays($i))->count());
+    }
         // for ($days_backwards = 2; $days_backwards >= 0; $days_backwards--) {
         //     // Could also be an array_push if using an array rather than a collection.
         //     $data->push(Transaction::whereDate('created_at', today()->subDays($days_backwards))->count());
         // }
+    $m = Carbon::now()->format('F');
+    $chart = new DailyChart;
+    $chart->labels($dates);
+    $chart->dataset('Transactions Per Day', 'column', $data)->options(['color' => '#f49e42', '#29e574']);
+    $chart->title('For the Month of '.$m);
+      
 
-        $transactions = Transaction::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))->get();
-        $transaction= Transaction::where(DB::raw("(DATE_FORMAT(created_at,'%m'))"),date('m'))->get();
+       
 
+        // $data = Transaction::where(DB::raw("(DATE_FORMAT(created_at,'%m'))"),date('m'))
+        //     ->get()
+        //     ->groupBy(function($date){
+        //         return Carbon::parse($date->created_at)->format('F d, Y');
+        //     })
+        //     ->map(function ($item) {
+     
+        //         return count($item);
+        //     });
 
-        $chart = Charts::multiDatabase('line', 'highcharts')
-            ->dataset('Daily Transactions',$transaction)->colors(['#1E90FF'])
-            ->title('Transaction Summary')
-            ->elementLabel("Total")
-            ->dimensions(0, 500)
-            ->responsive(false)
-            ->groupByDay(date('m'),date('Y'), true);
-
-        $pie = Charts::database(Transaction::all(), 'pie', 'highcharts')
-            ->title('Payments')
-            ->colors(['#FF4500', '#FFD700', '#32CD32', '#40E0D0'])
-            ->dimensions(0,500)
-            ->responsive(false)
-            ->groupBy('transactionFor');
-    
+        // $m = Carbon::now()->format('F');
+        // $chart = new DailyChart;
+        // $chart->labels($data->keys());
+        // $chart->title($m);
+        // $chart->dataset('My dataset', 'areaspline', $data->values());
+   
+        $pie = new DailyChart;
+        $pie->labels($data->keys());
+        $pie->dataset('My dataset', 'bar', $data->values());
         return view('dashboard', ['posts' => $user->posts, 'chart' => $chart, 'pie' => $pie]);
     }
 }

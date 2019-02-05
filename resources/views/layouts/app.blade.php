@@ -18,6 +18,7 @@
 
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+
     </head>
     <body onload="myFunction()">
 
@@ -37,7 +38,7 @@
             <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
             
         </div>
-        <script src="js/sweetalert.min.js"></script>
+
 
         <!-- Include this after the sweet alert js file -->
         @include('sweet::alert')
@@ -53,7 +54,8 @@
         <script src="{{ asset('js/back-to-top.js') }}"></script>
         <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js" charset="utf-8"></script>
         <script src="{{ asset('js/main.js') }}"></script>
+        
     </body>
 </html>

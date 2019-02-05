@@ -196,10 +196,10 @@ class DuesController extends Controller
     public function autocomplete(Request $request)
     {
         $term = $request->term;
-        $data = Tenant::where('last_name', 'LIKE', '%'.$term.'%')
-                        ->orWhere('first_name', 'LIKE', '%'.$term.'%')
-                        ->selectRaw('id, CONCAT(first_name, " ", last_name) AS full_name,first_name,last_name, middle_name, block, lot, street')
-                        ->get()->take(10);
+        $data = Tenant::selectRaw('id, CONCAT(first_name, " ", last_name) AS full_name,first_name,last_name, middle_name, block, lot, street')
+                ->where('last_name', 'LIKE', '%'.$term.'%')
+                ->orWhere('first_name', 'LIKE', '%'.$term.'%')        
+                ->get()->take(10);
         $results = array();
         
         foreach($data as $key => $v )

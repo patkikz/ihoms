@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{!! Charts::styles() !!}
+
 <div id="wrapper">
 
     @include('inc.sidebar')
@@ -80,39 +80,50 @@
                         </div>
                     </div>
                     <div class="row my-3">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="card rounded-0">
-                                <div class="card-header">All Transactions</div>
+                            <div class="card-header">Monthly Transaction</div>
                 
                                 <div class="card-body">    
-                                    {!! $chart->html()!!}
+                                    {!! $chart->container() !!}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-md-8">
                             <div class="card rounded-0">
                                 <div class="card-header">Daily Transactions</div>
                                     <div class="card-body">    
-                                        {!! $pie->html()!!}
+                                        {!! $pie->container()!!}
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card rounded-0">
+                                <div class="card-header">Monthly Transactions</div>
+                                    <div class="card-body">    
+                                        {!! $bar->container()!!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="container">
-        
-    </div>
-<br>
-<div class="container">
-    
-    </div>
-{!! Charts::scripts() !!}
+
 {!! $chart->script() !!}
-{!! $pie->script() !!}
+
+{{-- {!! $pie->script() !!}
+{!! $bar->script() !!} --}}
+@endsection
+
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.6/highcharts.js" charset="utf-8"></script>
+window.{{ $chart->id }}
 @endsection
