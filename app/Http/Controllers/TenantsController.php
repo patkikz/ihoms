@@ -44,7 +44,9 @@ class TenantsController extends Controller
      */
     public function create()
     {
-        return view('tenants.create');
+        $cities = DB::table('cities')->orderBy('city_municipality_description', 'asc')->pluck('city_municipality_description', 'id');
+        $provinces = DB::table('provinces')->orderBy('province_description', 'asc')->pluck('province_description', 'id');
+        return view('tenants.create', compact('cities', 'provinces'));
     }
 
     /**
@@ -107,12 +109,14 @@ class TenantsController extends Controller
      */
     public function edit(Tenant $tenant)
     {
+        $cities = DB::table('cities')->orderBy('city_municipality_description', 'asc')->pluck('city_municipality_description', 'id');
+        $provinces = DB::table('provinces')->orderBy('province_description', 'asc')->pluck('province_description', 'id');
         if(auth()->user()->id !== $tenant->owner_id)
         {
             return redirect('/tenants')->with('error', 'Unauthorized Page');    
         }
 
-        return view('tenants.edit', compact('tenant'));
+        return view('tenants.edit', compact('tenant', 'cities', 'provinces'));
     }
 
     /**
@@ -194,5 +198,28 @@ class TenantsController extends Controller
         }
         return redirect('/tenants')->with('success', 'Family Member Added!'); 
     }
-    
+
+    public function autocompleteCities(Request $request)
+    {
+        $term = $request->term;
+        $data = Tenant::where('city_municipality_description', 'LIKE', '%'.$term.'%')
+                        ->selectRaw('id, CONCAT(first_name, " ", last_name) AS full_name,first_name,last_name, middle_name, block, lot, street')
+                        ->get()->take(10);
+        $results = array();
+        
+        foreach($data as $key => $v )
+        {
+            $results[] = ['id' => $v->id,
+            'value' => $v->full_name,
+            'first_name' => $v->first_name,
+            'last_name' => $v->last_name,
+            'middle_name' => $v->middle_name,
+            'block' => $v->block,
+            'lot' => $v->lot,
+            'street' => $v->street
+            ];  
+        }
+
+        return response()->json($results);
+    }
 }

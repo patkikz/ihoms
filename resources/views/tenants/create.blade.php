@@ -61,10 +61,10 @@
                                                 {{Form::date('birth_date', \Carbon\Carbon::now(), ['class' => ($errors->has('birth_date')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Birth Date'])}}
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                {{Form::text('birth_place', '', ['class' => ($errors->has('birth_place')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Birth Place'])}}
+                                                {{Form::select('birth_place', $cities, null, ['class' => ($errors->has('birth_place')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Birth Place'])}}
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                {{Form::text('province', '', ['class' => ($errors->has('province')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Province'])}}
+                                                {{Form::select('province', $provinces, null, ['class' => ($errors->has('province')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Province'])}}
                                             </div>
                                         </div>
                                     </div>

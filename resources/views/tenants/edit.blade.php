@@ -60,10 +60,10 @@
                                                     {{Form::date('birth_date', $tenant->birth_date, ['class' => ($errors->has('birth_date')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Birth Date'])}}
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                    {{Form::text('birth_place', $tenant->birth_place, ['class' => ($errors->has('birth_place')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Birth Place'])}}
+                                                    {{Form::select('birth_place', $cities, $tenant->birth_place, ['class' => ($errors->has('birth_place')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Birth Place'])}}
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                                    {{Form::text('province', $tenant->province, ['class' => ($errors->has('province')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Province'])}}
+                                                    {{Form::select('province', $provinces, $tenant->province ,['class' => ($errors->has('province')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label', 'placeholder' => 'Province'])}}
                                                 </div>
                                             </div>
                                         </div>
@@ -112,10 +112,10 @@
                                 <div class="form-group">
                                     <div class="form-row mx-auto">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                                            {{ Form::radio('payment_mode', 1) }}
+                                            {{ Form::radio('payment_mode', $tenant->payment_mode) }}
                                             <label class="mt-2">Mortcage</label>
                                             <br />
-                                            {{ Form::radio('payment_mode', 0) }}
+                                            {{ Form::radio('payment_mode', $tenant->payment_mode) }}
                                             <label class="mt-2">Fully Paid</label>
                                         </div>
                                         {{-- <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2">
@@ -127,10 +127,10 @@
                                         </div> --}}
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1"></div>
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                                            {{ Form::radio('withParking', 1) }}
+                                            {{ Form::radio('withParking', $tenant->withParking) }}
                                             <label class="mt-2">With Parking</label>
                                             <br />
-                                            {{ Form::radio('withParking', 0) }}
+                                            {{ Form::radio('withParking', $tenant->withParking) }}
                                             <label class="mt-2">Without Parking</label>
                                         </div>
                                     </div>

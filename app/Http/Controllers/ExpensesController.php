@@ -78,7 +78,7 @@ class ExpensesController extends Controller
      * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function edit(Expense $expense, Purpose $purpose)
+    public function edit(Expense $expense)
     {
         $purpose = Purpose::pluck('purpose_name', 'id');
         

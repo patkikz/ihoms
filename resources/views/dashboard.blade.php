@@ -82,7 +82,7 @@
                     <div class="row my-3">
                         <div class="col-md-8">
                             <div class="card rounded-0">
-                                <div class="card-header">Daily Transactions</div>
+                                <div class="card-header">All Transactions</div>
                 
                                 <div class="card-body">    
                                     {!! $chart->html()!!}
@@ -95,7 +95,7 @@
                             <div class="card rounded-0">
                                 <div class="card-header">Daily Transactions</div>
                                     <div class="card-body">    
-                                        {!! $bar->html()!!}
+                                        {!! $pie->html()!!}
                                     </div>
                                 </div>
                             </div>
@@ -114,5 +114,5 @@
     </div>
 {!! Charts::scripts() !!}
 {!! $chart->script() !!}
-{!! $bar->script() !!}
+{!! $pie->script() !!}
 @endsection

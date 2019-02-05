@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PaymentManagementSeeder::class);
         $this->call(ReservationTypeSeeder::class);
         $this->call(PaymentsManagementSeeder::class);
-       
+        $this->call(ProvincesTableSeeder::class);
+        $this->call(CitiesTableSeeder::class);
+        $this->call(VehicleTypesTableSeeder::class);
     }
 }

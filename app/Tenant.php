@@ -64,4 +64,13 @@ class Tenant extends Model
     {
         return $this->hasMany(ArrearTransaction::class);
     }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'birth_place');
+    }
+
+    public function province(){
+        return $this->belongsTo(Province::class, 'province');
+    }
 }

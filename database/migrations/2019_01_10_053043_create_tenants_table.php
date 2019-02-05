@@ -20,8 +20,8 @@ class CreateTenantsTable extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->date('birth_date');
-            $table->string('birth_place');
-            $table->string('province');
+            $table->unsignedInteger('birth_place');
+            $table->unsignedInteger('province');
             $table->string('block');
             $table->string('lot');
             $table->string('street');
