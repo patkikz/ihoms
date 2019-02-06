@@ -35,47 +35,36 @@ class DashboardController extends Controller
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
 
-        
-    $data = collect([]); // Could also be an array
-    $today = today(); 
-    $dates = []; 
+            
+        $data = collect([]); // Could also be an array
+        $today = today(); 
+        $dates = []; 
 
-    for($i=1; $i <  $today->daysInMonth +1 ; $i++) {
-        $dates[] = \Carbon\Carbon::createFromDate($today->year, $today->month, $i)->format('F-d-Y');
-        $data->push(Transaction::whereDate('created_at', $today->startOfMonth()->addDays($i))->count());
-    }
-        // for ($days_backwards = 2; $days_backwards >= 0; $days_backwards--) {
-        //     // Could also be an array_push if using an array rather than a collection.
-        //     $data->push(Transaction::whereDate('created_at', today()->subDays($days_backwards))->count());
-        // }
-    $m = Carbon::now()->format('F');
-    $chart = new DailyChart;
-    $chart->labels($dates);
-    $chart->dataset('Transactions Per Day', 'column', $data)->options(['color' => '#f49e42', '#29e574']);
-    $chart->title('For the Month of '.$m);
-      
+        for($i=1; $i <  $today->daysInMonth +1 ; $i++) {
+            $dates[] = \Carbon\Carbon::createFromDate($today->year, $today->month, $i)->format('F-d-Y');
+            $data->push(Transaction::whereDate('created_at', $today->startOfMonth()->addDays($i))->count());
+        }
+            // for ($days_backwards = 2; $days_backwards >= 0; $days_backwards--) {
+            //     // Could also be an array_push if using an array rather than a collection.
+            //     $data->push(Transaction::whereDate('created_at', today()->subDays($days_backwards))->count());
+            // }
+        $m = Carbon::now()->format('F');
+        $chart = new DailyChart;
+        $chart->labels($dates);
+        $chart->dataset('Transactions Per Day', 'column', $data)->options(['color' => '#f49e42', '#29e574']);
+        $chart->title('For the Month of '.$m);
+            
 
+            
+        $dues = Transaction::where('transactionFor', '=', 'dues')->get()->count();
+        $cars = Transaction::where('transactionFor', '=','car-stickers')->get()->count();
+        $arrears = Transaction::where('transactionFor', '=', 'arrears')->get()->count();
+        $reservations = Transaction::where('transactionFor', '=', 'clubhouse reservations')->get()->count();
        
-
-        // $data = Transaction::where(DB::raw("(DATE_FORMAT(created_at,'%m'))"),date('m'))
-        //     ->get()
-        //     ->groupBy(function($date){
-        //         return Carbon::parse($date->created_at)->format('F d, Y');
-        //     })
-        //     ->map(function ($item) {
-     
-        //         return count($item);
-        //     });
-
-        // $m = Carbon::now()->format('F');
-        // $chart = new DailyChart;
-        // $chart->labels($data->keys());
-        // $chart->title($m);
-        // $chart->dataset('My dataset', 'areaspline', $data->values());
-   
         $pie = new DailyChart;
-        $pie->labels($data->keys());
-        $pie->dataset('My dataset', 'bar', $data->values());
+        $pie->labels(['Dues','Car Stickers','Clubhouse Reservations','Arrears']);
+        $pie->dataset('My dataset', 'pie', [$dues,$cars,$reservations,$arrears])
+            ->options(['color' => ['#4286f4', '#41f480','#f4e241','#f44e42']]);
         return view('dashboard', ['posts' => $user->posts, 'chart' => $chart, 'pie' => $pie]);
     }
 }

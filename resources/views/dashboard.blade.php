@@ -82,26 +82,24 @@
                     <div class="row my-3">
                         <div class="col-md-6">
                             <div class="card rounded-0">
-                            <div class="card-header">Monthly Transaction</div>
+                            <div class="card-header">Daily Transaction</div>
                 
                                 <div class="card-body">    
                                     {!! $chart->container() !!}
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {{-- <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="card rounded-0">
-                                <div class="card-header">Daily Transactions</div>
+                                <div class="card-header">Transactions Summary</div>
                                     <div class="card-body">    
                                         {!! $pie->container()!!}
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                    </div>
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-md-8">
                             <div class="card rounded-0">
                                 <div class="card-header">Monthly Transactions</div>
@@ -119,11 +117,11 @@
 
 {!! $chart->script() !!}
 
-{{-- {!! $pie->script() !!}
-{!! $bar->script() !!} --}}
+{!! $pie->script() !!}
+{{-- {!! $bar->script() !!} --}}
 @endsection
 
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.6/highcharts.js" charset="utf-8"></script>
-window.{{ $chart->id }}
+
 @endsection
