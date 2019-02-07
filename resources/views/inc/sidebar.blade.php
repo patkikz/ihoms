@@ -3,34 +3,33 @@
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
             <a href="/">
-                <img class="img-fluid" src="{{ asset('assets/images/logo2.png') }}">
+                <img class="img-fluid" src="{{ asset('assets/images/logo1.png') }}">
             </a>
         </li>
         @can('isAdmin')
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/tenants">HO Masterfile</a></li>
-            <li>
-                <a href="#" class="dropdown-btn">Payment Management <i class="fa fa-caret-down"></i></a>
+            <li class="list-a"><a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li class="list-a"><a href="/tenants"><i class="fas fa-users"></i> HO Masterfile</a></li>
+            <li class="list-a">
+                <a href="#" class="pt-2 pb-2" style="color: #444444;">Payment Management</a>
                 <div class="dropdown-container">
-                    <a href="/dues">Monthly Dues</a>
-                    <a href="/car-stickers">Car Stickers</a>
-                    <a href="/reservations">Club House Reservation</a>
-                    <a href="/arrears">Arrears</a>
+                    <a href="/dues"><i class="fas fa-calendar-alt"></i> Monthly Dues</a>
+                    <a href="/car-stickers"><i class="fas fa-car"></i> Car Stickers</a>
+                    <a href="/reservations"><i class="fas fa-home"></i> Club House Reservation</a>
+                    <a href="/arrears"><i class="fas fa-money-bill"></i> Arrears</a>
                 </div>
             </li>
-            <li><a href="/expenses">Expenses</a></li>
-            <li>
-                <a href="#" class="dropdown-btn">File Management <i class="fa fa-caret-down"></i></a>
-                <div class="dropdown-container">
-                    
-                    <a href="/purposes">Purposes</a>
+            <li class="list-a"><a href="/expenses"><i class="fas fa-sticky-note"></i> Expenses</a></li>
+            <li class="list-a">
+                <a href="#" class="pt-2 pb-2" style="color: #444444;">File Management</a>
+                <div class="list-a2">
+                    <a href="/purposes"><i class="fas fa-edit"></i> Purposes</a>
                 </div>
             </li>
         @endcan
 
         @can('isUser')
-            <li><a href="/posts">Dashboard</a></li>
-            <li><a href="/tenants/family-members">My Family Members</a></li>
+            <li class="list-a"><a href="/posts"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li class="list-a"><a href="/tenants/family-members">My Family Members</a></li>
         @endcan
     </ul>
 </div>

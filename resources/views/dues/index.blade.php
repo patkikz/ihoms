@@ -10,16 +10,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
-                    @include('inc.search')
+                    {{-- @include('inc.search') --}}
                 </div>
 
                 <div class="col-xl-12 col-lg-12">
-                    <div class="card">
-                        <div class="card-header pb-0">
-                            <h3>Monthly Dues</h3>
+                    <div class="card rounded-0">
+                        <div class="card-header pb-0 pt-0">
+                            <div class="d-flex justify-content-between">
+                                <div class="mt-4">MONTHLY DUES</div>
+                                <a href="/dues/create" class="btn btn-primary rounded-0 float-right my-3">Add Payment</a>
+                            </div>
                         </div>
                         <div class="card-body">
-                            <a href="/dues/create" class="btn btn-primary rounded-0 float-right my-3">Add Payment</a>
+                            
                             @if(count($dues) > 0)
                                 <table class="table table-striped table-sm">
                                     <tr>

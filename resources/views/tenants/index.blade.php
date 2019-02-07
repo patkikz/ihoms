@@ -10,14 +10,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
-                    @include('inc.search')
+                    {{-- @include('inc.search') --}}
                 </div>
 
                 <div class="col-xl-12 col-lg-12">
 
-                    <div class="card">
-                        <div class="card-header pb-0">
-                            <h3>HOMEOWNERS</h3>
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            HOMEOWNERS MASTERFILE
                         </div>
                         <div class="card-body">
                             <a href="/tenants/create" class="btn btn-primary float-right primary-bg rounded-0 my-3">Add Homeowner</a>

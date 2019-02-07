@@ -1,12 +1,7 @@
 <div class="topbar clearfix">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 text-left">
-                <div class="social_buttons">
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="iHOMS">Homeowners Management System</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-right">
+            <div class="col-lg-12 text-right">
                 <div class="social_buttons">
                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
@@ -21,7 +16,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="#"><b>i</b><span>HOMS</span></a>
+        <a class="navbar-brand" href="#"><b>i</b><span>HOMS - SAN MARINO CLASSIC</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon primary-color"></span>
         </button>

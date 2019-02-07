@@ -14,7 +14,7 @@
                     <header class="mb-2 row justify-center">
                         <div class="col-3 col-sm-2 col-md-6 col-lg-6 col-xl-6" >
                             <div class="float-left text-center text-md-left input-group">
-                                <a href="#menu-toggle" class="btn btn-primary rounded-0 primary-bg" id="menu-toggle"><i class="fa fa-bars"></i></a>
+                                <a href="#menu-toggle" class="btn btn-primary rounded-0 primary-bg" id="menu-toggle" style="display:none;"><i class="fa fa-bars"></i></a>
                             </div>
                         </div>
 
@@ -29,168 +29,190 @@
                     </header>
 
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card rounded-0 border-0">
-                                <div class="card-header pb-0">
-                                    <h4>CLUB HOUSE RESERVATION</h4>
+                        <div class="col-lg-4 col-xl-4">
+                            <div class="card rounded-0">
+                                <div class="card-header">
+                                    HOMEOWNER
                                 </div>
                                 <div class="card-body">
                                     {!! Form::open(['action' => 'ReservationsController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'id' => 'getHere']) !!}
                                         {{Form::hidden('domain', '', ['id' => 'domain'])}}
                                         <div class="form-row">
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <div class="form-group">
                                                 <label>Transaction Sequence No. : <b>{{$latest + 1}}</b></label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-row">
-                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <div class="form-group">
-                                                    <label>HO ID</label>
+                                                    <label class="primary-color">HO ID</label>
                                                     {!!Form::text('tenant_id' , '', ['placeholder' => 'Homeowner ID', 'class' => 'form-control input-label rounded-0', 'id' => 'tenantID', 'readonly' => 'true'])!!}
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                                <div class="form-group">
-                                                    <label>FROM <i class="fa fa-clock-o"></i></label>
-                                                    {!! Form::time('start_time',Carbon\Carbon::now()->format('H:i'), ['class' => 'form-control input-label rounded-0']) !!}
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                                <div class="form-group">
-                                                    <label>TO <i class="fa fa-clock-o"></i></label>
-                                                    {!! Form::time('end_time','', ['class' => 'form-control input-label rounded-0']) !!}
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-row">
-                                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="form-group">
+                                                        <label class="primary-color mb-0">FULL NAME</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <div class="form-group">
                                                         {{Form::text('last_name', '', ['class' => ($errors->has('last_name')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0', 'placeholder' => 'Last Name', 'id' => 'lastName', 'readonly' => true])}}
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <div class="form-group">
                                                         {{Form::text('first_name', '', ['class' => ($errors->has('first_name')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0', 'placeholder' => 'First Name', 'id' => 'firstName', 'readonly' => true])}}
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <div class="form-group">
                                                         {{Form::text('middle_name', '', ['class' => ($errors->has('middle_name')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0', 'placeholder' => 'Middle Name','id' => 'middleName', 'readonly' => true])}}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="form-group">
+                                                        <label class="primary-color mb-0">ADDRESS</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                     {{Form::text('block', '', ['class' => ($errors->has('block')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Block', 'id' => 'block', 'readonly' => true])}}
                                                 </div>
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                     {{Form::text('lot', '', ['class' => ($errors->has('lot')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Lot', 'id' => 'lot', 'readonly' => true])}}     
                                                 </div>
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                     {{Form::text('street', '', ['class' => ($errors->has('street')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Street', 'id' => 'street', 'readonly' => true])}}
                                                 </div>
                                             </div>
-                                        <div class="form-row">
-                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                                <div class="form-group">
-                                                    <label>DATE OF RESERVATION <i class="fa fa-calendar"></i></label>
-                                                    {!! Form::date('reserved_date',Carbon\Carbon::now(), ['class' => 'form-control input-label rounded-0']) !!}
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                                <div class="form-group">
-                                                    <label>Reservation Type</label>
-                                                    {!! Form::select('reservation_type', $types, null, ['placeholder' => 'Please pick one','class' => 'form-control input-label rounded-0', 'id' => 'getThis'])!!}
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                                                    <div class="form-group">
-                                                        <label>Amount</label>
-                                                        {{Form::number('amount','', ['class' => 'form-control input-label rounded-0', 'readonly' => true, 'id' => 'amount'])}}
-                                                    </div>
-                                            </div>
-                
-                                        </div>
+                                        
+                                </div>
+                            </div>
+                        </div>
 
-                                        <div class="form-row">
-                                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
-                                                <div class="form-group">
-                                                    <button input="button" class="btn btn-primary primary-bg rounded-0 btn-block" id="btnshowmodal" onclick="popup();return false;" runat="server">ADD</button>
-                                                        
-                                                </div>
+                        <div class="col-xl-8 col-lg-8">
+                            <div class="card rounded-0">
+                                <div class="card-header">
+                                    CLUBHOUSE RESERVATION
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="primary-color"><i class="fa fa-clock-o"></i> FROM</label>
+                                                {!! Form::time('start_time',Carbon\Carbon::now()->format('H:i'), ['class' => 'form-control input-label rounded-0']) !!}
                                             </div>
-                                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
-                                                <div class="form-group">
-                                                    <button input="button" class="btn btn-primary primary-bg rounded-0 btn-block" id="btnshowmodal" onclick="popupReservation();return false;" runat="server">VIEW SCHEDULES</button>
-                                         
-                                                </div>
-                                            </div>
-
                                         </div>
-                                        <div class="modal fade dues-modal" id="here" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content rounded-0 border-0">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Monthly Dues</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body pb-0 ">
-                                                          
-                                                                <div class="form-row parent">
-                                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                        <div class="form-group">
-                                                                            <label>TOTAL</label>
-                                                                            {{Form::number('total_amount', '', ['class' => ($errors->has('amount')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0 total_amount', 'placeholder' => 'Amount'])}}
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                        <div class="form-group">
-                                                                            <label>TENDER</label>
-                                                                            {{Form::number('tender', '', ['class' => ($errors->has('tender')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0 tender', 'placeholder' => 'Tender'])}}
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                        <div class="form-group">
-                                                                            <label>CHANGE</label>
-                                                                            {{Form::number('change', '', ['class' => ($errors->has('change')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0 change', 'placeholder' => 'Change', 'readonly' => true])}}
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="d-flex w-100 justify-content-end mt-3">
-                                                                        <div class="form-group pr-2 pl-2">
-                                                                            {{Form::submit('Submit', ['class' => 'button primary-bg rounded-0'])}}
-                                                                        </div>
-                                                                        <div class="form-group pr-2 pl-2">
-                                                                            <button type="button" class="button primary-bg rounded-0" data-dismiss="modal">CANCEL</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>  
-                                    </form>
-                                    <div class="modal fade" id="add-reserve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                                            <div class="modal-content rounded-0 border-0">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">SCHEDULE</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                    <label class="primary-color"><i class="fa fa-clock-o"></i> TO</label>
+                                                {!! Form::time('end_time','', ['class' => 'form-control input-label rounded-0']) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="primary-color"><i class="fa fa-calendar"></i> DATE OF RESERVATION</label>
+                                                {!! Form::date('reserved_date',Carbon\Carbon::now(), ['class' => 'form-control input-label rounded-0']) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="primary-color">Reservation Type</label>
+                                                {!! Form::select('reservation_type', $types, null, ['placeholder' => 'Please pick one','class' => 'form-control input-label rounded-0', 'id' => 'getThis'])!!}
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="primary-color">Amount</label>
+                                                {{Form::number('amount','', ['class' => 'form-control input-label rounded-0', 'readonly' => true, 'id' => 'amount'])}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <button input="button" class="btn btn-primary primary-bg rounded-0 btn-block" id="btnshowmodal" onclick="popup();return false;" runat="server">ADD</button>
                                                     
-                                                </div>
                                             </div>
                                         </div>
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <button input="button" class="btn btn-primary primary-bg rounded-0 btn-block" id="btnshowmodal" onclick="popupReservation();return false;" runat="server">VIEW SCHEDULES</button>
+                                        
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="modal fade dues-modal" id="here" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content rounded-0 border-0">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Monthly Dues</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body pb-0 ">
+                                          
+                                                <div class="form-row parent">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="form-group">
+                                                            <label>TOTAL</label>
+                                                            {{Form::number('total_amount', '', ['class' => ($errors->has('amount')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0 total_amount', 'placeholder' => 'Amount'])}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="form-group">
+                                                            <label>TENDER</label>
+                                                            {{Form::number('tender', '', ['class' => ($errors->has('tender')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0 tender', 'placeholder' => 'Tender'])}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="form-group">
+                                                            <label>CHANGE</label>
+                                                            {{Form::number('change', '', ['class' => ($errors->has('change')) ? 'form-control input-label rounded-0 is-invalid' : 'form-control input-label rounded-0 change', 'placeholder' => 'Change', 'readonly' => true])}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex w-100 justify-content-end mt-3">
+                                                        <div class="form-group pr-2 pl-2">
+                                                            {{Form::submit('Submit', ['class' => 'button primary-bg rounded-0'])}}
+                                                        </div>
+                                                        <div class="form-group pr-2 pl-2">
+                                                            <button type="button" class="button primary-bg rounded-0" data-dismiss="modal">CANCEL</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                    </form>
+                    <div class="modal fade" id="add-reserve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content rounded-0 border-0">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">SCHEDULE</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

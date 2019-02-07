@@ -13,33 +13,17 @@
         </div>
     </section>
 
-    <section class="section3">
-        <div class="container withpadding">
-            <div class="row">
-                <div class="message d-flex">
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-                        <h3>HOMEOWNERS INSURANCE</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s..</p>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                        <a class="dmbutton button large pull-right primary-bg" href="#"> View More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="section1">
         <div class="container">
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                     <div class="servicebox text-center">
                         <div class="service-icon">
-                            <div class="dm-icon-effect-1" data-effect="slide-left">
-                                <a href="#" class=""> <i class="active dm-icon fa fa-rocket fa-3x"></i> </a>
-                            </div>
+                            {{-- <div class="dm-icon-effect-1" data-effect="slide-left">
+                                <a href="#" class=""> <i class="active dm-icon fa fa-rocket fa-3x primary-color"></i> </a>
+                            </div> --}}
                             <div class="servicetitle">
-                                <h4>Mission</h4>
+                                <h4 class="primary-color">Mission</h4>
                                 <hr>
                             </div>
                             <p>To Serve our Community with love Respect and honor to our fellow neighbors.</p>
@@ -50,11 +34,11 @@
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                     <div class="servicebox text-center">
                         <div class="service-icon">
-                            <div class="dm-icon-effect-1" data-effect="slide-bottom">
-                                <a href="#" class=""> <i class="active dm-icon fa fa-eye fa-3x"></i> </a>
-                            </div>
+                            {{-- <div class="dm-icon-effect-1" data-effect="slide-bottom">
+                                <a href="#" class=""> <i class="active dm-icon fa fa-eye fa-3x primary-color"></i> </a>
+                            </div> --}}
                             <div class="servicetitle">
-                                <h4>Vision</h4>
+                                <h4 class="primary-color">Vision</h4>
                                 <hr>
                             </div>
                             <p>We will lead in Delivering Positive Results in Integrated Homeowners Management System.</p>
@@ -65,11 +49,11 @@
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                     <div class="servicebox text-center">
                         <div class="service-icon">
-                            <div class="dm-icon-effect-1" data-effect="slide-right">
-                                <a href="#" class=""> <i class="active dm-icon fa fa-book fa-3x"></i> </a>
-                            </div>
+                            {{-- <div class="dm-icon-effect-1" data-effect="slide-right">
+                                <a href="#" class=""> <i class="active dm-icon fa fa-book fa-3x primary-color"></i> </a>
+                            </div> --}}
                             <div class="servicetitle">
-                                <h4>Core Values</h4>
+                                <h4 class="primary-color">Core Values</h4>
                                 <hr>
                             </div>
                             <p>Innovation, Quality, Collaboration, Performance, Integrity, Commitment</p>
@@ -80,7 +64,7 @@
         </div>
     </section>
 
-    <section class="section5">
+    {{-- <section class="section5">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 columns">
@@ -189,7 +173,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 @include('inc.footer')
 

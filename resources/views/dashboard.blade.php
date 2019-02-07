@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
-                    <header class="mb-2 row justify-center">
+                    {{-- <header class="mb-2 row justify-center">
                         <div class="col-3 col-sm-2 col-md-6 col-lg-6 col-xl-6" >
                             <div class="float-left text-center text-md-left input-group">
                                 <a href="#menu-toggle" class="btn btn-primary rounded-0 primary-bg" id="menu-toggle"><i class="fa fa-bars"></i></a>
@@ -25,13 +25,13 @@
                                 </span>
                             </div>
                         </div>
-                    </header>
+                    </header> --}}
                     
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="card rounded-0 border-0">
-                                <div class="card-header pb-0">
-                                    <h4>DASHBOARD{!! auth()->user()->isAdmin == 1 ? ' - Admin' : ' - User' !!}</h4>
+                            <div class="card rounded-0">
+                                <div class="card-header">
+                                    DASHBOARD{!! auth()->user()->isAdmin == 1 ? ' - Admin' : ' - User' !!}
                                 </div>
                                 <div class="card-body">
                                     <div>
@@ -82,7 +82,7 @@
                     <div class="row my-3">
                         <div class="col-md-6">
                             <div class="card rounded-0">
-                            <div class="card-header">Daily Transaction</div>
+                            <div class="card-header">DAILY TRANSACTIONS</div>
                 
                                 <div class="card-body">    
                                     {!! $chart->container() !!}
@@ -91,7 +91,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card rounded-0">
-                                <div class="card-header">Transactions Summary</div>
+                                <div class="card-header">TRANSACTIONS SUMMARY</div>
                                     <div class="card-body">    
                                         {!! $pie->container()!!}
                                     </div>
