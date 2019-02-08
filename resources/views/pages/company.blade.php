@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section1">
+{{-- <section class="section1">
     <div class="container clearfix">
         <div class="row">
                 <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
@@ -34,23 +34,169 @@
                 </div>
         </div>
     </div>
-    </section>
+    </section> --}}
 
-    <section class="section3">
-    <div class="container withpadding">
-            <div class="message">
-            <div class="row">
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
-                    <h3>HOMEOWNERS INSURANCE</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s..</p>
+    <section class="section1">
+    <div class="container clearfix">
+        <div class="row">
+                <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
+                <h2>LIST OF EXECUTIVE OFFICERS and BOARD OF DIRECTORS</h2><br/>
+                
+                <div class="col-xl-12 col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th colspan="2">EXECUTIVE COMMITEE:</th>
+                                </tr>
+                            </thead>
+                            <tr class="text-center">
+                                <th>
+                                    <i>Position</i>
+                                </th>
+                                <th>
+                                    <i>Name</i>
+                                </th>
+                            </tr>
+                            <tr class="text-center">
+                                <td>
+                                    PRESIDENT
+                                </td>
+                                <td>
+                                    JEANA MACAUMA
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>
+                                    VICE PRESIDENT
+                                </td>
+                                <td>
+                                    DR. FRANCISCO ABALOS
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>
+                                    SECRETARY
+                                </td>
+                                <td>
+                                    JOAN T. VILLAS
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>
+                                    TREASURER
+                                </td>
+                                <td>
+                                    JENNIFER M. DELFINO
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>
+                                    AUDITOR
+                                </td>
+                                <td>
+                                    CESAR PABICO
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                    <a class="dmbutton button large pull-right primary-bg" href="#"> View More</a>
+                </div>
+                <div class="col-xl-12 col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th colspan="2">BOARD OF DIRECTORS:</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>
+                                    GRIVANCE & ADJUDICATION
+                                </td>
+                                <td>
+                                    BENJAMIN PATARAY, JR.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    AUDIT & INVENTORY
+                                </td>
+                                <td>
+                                    WILLIE C. JOSUE
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    COMMITEE ON ELECTIONS
+                                </td>
+                                <td>
+                                    RACHEL R. CRUZET
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    DEVELOPMENT & SERVICES
+                                </td>
+                                <td>
+                                    BERNIE LABASO
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    MEMBERSHIP & EDUCTION
+                                </td>
+                                <td>
+                                    CHRISTOPHER HETAJOBE
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    FINANCIAL MANAGEMENT
+                                </td>
+                                <td>
+                                    ROWENA KOH
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    LIVELIHOOD COMMITEE
+                                </td>
+                                <td>
+                                    ESTELITA DIAZ
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    MAINTENANCE COMMITEE
+                                </td>
+                                <td>
+                                    RYAN AZUR
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    PEACE AND ORDER
+                                </td>
+                                <td>
+                                    DANTE MANAIT
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    SOCIAL AND CULTURAL
+                                </td>
+                                <td>
+                                    RAYMOND BAYONITO
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-            </div>
-            </div>
+                </div>
+                
+        </div>
     </div>
     </section>
+
 
 @include('inc.footer')
 

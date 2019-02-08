@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use App\Events\UserCreated;
 use Carbon\Carbon;
 use Alert;
 use DB;
@@ -80,12 +81,14 @@ class TenantsController extends Controller
         $id = Tenant::create($request)->id;
         
     
-        User::create([
+        $user = User::create([
             'tenant_id' => $id,
             'name' => $request['first_name'],
             'email' => $request['email'],
             'password' => Hash::make('P@ssw0rd'),
         ]);
+
+        event(new UserCreated($user));  
     
         return redirect('/tenants')->with('success', 'Tenant Created Successfully');
     }

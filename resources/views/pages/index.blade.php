@@ -7,7 +7,8 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <img class="img-fluid mb-5" src="img/logo2.png">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <h2 style="color:#fff">OUR FOCUS</h2>
+                    <p>Binding Principle, Call to Action, Binding Principles, Guiding Principles, Basic Foundation</p>
                 </div>
             </div>
         </div>

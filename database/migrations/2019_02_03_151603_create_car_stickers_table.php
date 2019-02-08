@@ -22,6 +22,8 @@ class CreateCarStickersTable extends Migration
             $table->integer('tender');
             $table->integer('change');
             $table->timestamps();
+
+            $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
         });
     }
 

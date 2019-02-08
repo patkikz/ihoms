@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Events\PostCreated;
 use App\Listeners\SendPostCreatedNotification;
+use App\Events\UserCreated;
+use App\Listeners\SendUserCreatedNotification;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -23,6 +25,10 @@ class EventServiceProvider extends ServiceProvider
 
         PostCreated::class => [
             SendPostCreatedNotification::class,
+        ],
+
+        UserCreated::class => [
+            SendUserCreatedNotification::class,
         ]
     ];
 
