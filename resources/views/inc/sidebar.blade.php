@@ -22,14 +22,19 @@
             <li class="list-a">
                 <a href="#" class="pt-2 pb-2" style="color: #444444;">File Management</a>
                 <div class="list-a2">
-                    <a href="/purposes"><i class="fas fa-edit"></i> Purposes</a>
+                    <a href="/purposes"><i class="fas fa-edit"></i>Expenses Purposes</a>
                 </div>
             </li>
         @endcan
 
         @can('isUser')
+            <li class="list-a">
+                <a href="#" class="pt-2 pb-2" style="color: #444444;">HOMEOWNER </a>
+            </li>
             <li class="list-a"><a href="/posts"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-            <li class="list-a"><a href="/tenants/family-members">My Family Members</a></li>
+            <li class="list-a"><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+            <li class="list-a"><a href="/family-members"><i class="fas fa-users"></i> My Family</a></li>
+            <li class="list-a2 list-a"><a href="/tenants/"><i class="fas fa-history"></i> History</a></li>
         @endcan
     </ul>
 </div>

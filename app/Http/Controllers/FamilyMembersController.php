@@ -15,9 +15,12 @@ class FamilyMembersController extends Controller
      */
     public function index()
     {
-        $familyMembers =  FamilyMember::all();
+        $id = auth()->id() - 1;
+        $familyMembers =  FamilyMember::where('tenant_id', $id)->get();
 
-        return view('family-members.index');
+    
+
+        return view('family-members.index', compact('familyMembers'));
     }
 
     /**

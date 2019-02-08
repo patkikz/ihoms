@@ -62,6 +62,9 @@ Auth::routes(['verify' => true ,'register' => false]);
 Route::get('/dashboard/chart','DashboardController@chart');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('verified');
 
+Route::resource('profile', 'ProfilesController')->middleware('auth');
+Route::resource('family-members', 'FamilyMembersController')->middleware('auth');
+
 // Route::get('/home', 'HomeController@index')->name('dashboard')->middleware('verified');
 
 // Route::resource('admin/posts', 'Admin\\PostsController');

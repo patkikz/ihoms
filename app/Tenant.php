@@ -9,6 +9,7 @@ class Tenant extends Model
     protected $guarded = [
     ];
 
+    protected $dates = ['birth_date', 'created_at'];
 
     public function user()
     {
@@ -70,7 +71,7 @@ class Tenant extends Model
         return $this->belongsTo(City::class, 'birth_place');
     }
 
-    public function province(){
+    public function provinces(){
         return $this->belongsTo(Province::class, 'province');
     }
 }

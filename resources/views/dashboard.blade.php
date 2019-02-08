@@ -79,6 +79,7 @@
                             </div>
                         </div>
                     </div>
+                    @can('isAdmin')
                     <div class="row my-3">
                         <div class="col-md-6">
                             <div class="card rounded-0">
@@ -98,6 +99,8 @@
                                 </div>
                             </div>
                     </div>
+                    @endcan
+                   
 
                     {{-- <div class="row">
                         <div class="col-md-8">

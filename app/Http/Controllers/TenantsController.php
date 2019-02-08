@@ -158,7 +158,10 @@ class TenantsController extends Controller
      */
     public function destroy(Tenant $tenant)
     {
-        
+        if(auth()->user()->id !== $tenant->owner_id)
+        {
+            return redirect('/tenants')->with('error', 'Unauthorized Page');    
+        }
         $tenant->delete();
 
         return redirect('/tenants')->with('success', 'Tenant Removed');
