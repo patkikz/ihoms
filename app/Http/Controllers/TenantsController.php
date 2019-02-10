@@ -6,10 +6,13 @@ use App\Tenant;
 use App\User;
 use App\Relationship;
 use App\FamilyMember;
+use App\Gender;
+use App\CivilStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Support\Facades\Storage;
 use App\Events\UserCreated;
 use Carbon\Carbon;
 use Alert;
@@ -47,7 +50,9 @@ class TenantsController extends Controller
     {
         $cities = DB::table('cities')->orderBy('city_municipality_description', 'asc')->pluck('city_municipality_description', 'id');
         $provinces = DB::table('provinces')->orderBy('province_description', 'asc')->pluck('province_description', 'id');
-        return view('tenants.create', compact('cities', 'provinces'));
+        $genders = Gender::orderBy('id', 'asc')->pluck('gender','id');
+        $civil_statuses = CivilStatus::orderBy('id', 'asc')->pluck('civil_status','id');
+        return view('tenants.create', compact('cities', 'provinces','genders','civil_statuses'));
     }
 
     /**
@@ -58,13 +63,43 @@ class TenantsController extends Controller
      */
     public function store(Request $request)
     {
+        
+        if($request->hasFile('profile_image'))
+        {
+            //Get filename with extension
+
+            $filenameWithExt = $request->file('profile_image')->getClientOriginalName();
+
+            //Get jusy file name
+
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+            //Get just extension
+
+            $extension = $request->file('profile_image')->getClientOriginalExtension();
+
+            // Filename to 
+            
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+
+            // Upload
+
+            $path = $request->file('profile_image')->storeAs('public/profile_images', $fileNameToStore);
+        }
+        else
+        {
+            $fileNameToStore = 'noimage.jpg';
+        }
     
         $request = request()->validate(
             [
                 'email' => 'required',
+                'profile_image' => 'required|image|nullable|max:1999',
                 'last_name' => 'required',
                 'first_name' => 'required',
                 'middle_name' => 'required',
+                'gender' => 'required',
+                'civil_status' => 'required',
                 'birth_date' => 'required',
                 'birth_place' => 'required',
                 'province' => 'required',
@@ -74,8 +109,11 @@ class TenantsController extends Controller
                 'payment_mode' => 'required',
                 'withParking' => 'required',
             ]);
+
+   
         
         $request['owner_id'] = auth()->id();
+        $request['profile_image'] = $fileNameToStore;
                 
         
         $id = Tenant::create($request)->id;
@@ -114,12 +152,14 @@ class TenantsController extends Controller
     {
         $cities = DB::table('cities')->orderBy('city_municipality_description', 'asc')->pluck('city_municipality_description', 'id');
         $provinces = DB::table('provinces')->orderBy('province_description', 'asc')->pluck('province_description', 'id');
+        $genders = Gender::orderBy('id', 'asc')->pluck('gender','id');
+        $civil_statuses = CivilStatus::orderBy('id', 'asc')->pluck('civil_status','id');
         if(auth()->user()->id !== $tenant->owner_id)
         {
             return redirect('/tenants')->with('error', 'Unauthorized Page');    
         }
 
-        return view('tenants.edit', compact('tenant', 'cities', 'provinces'));
+        return view('tenants.edit', compact('tenant', 'cities', 'provinces','genders','civil_statuses'));
     }
 
     /**
@@ -227,5 +267,16 @@ class TenantsController extends Controller
         }
 
         return response()->json($results);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $tenants = DB::table('tenants')
+                    ->where('last_name', '%'.$search.'%')
+                    -orWhere('first_name', '%'.$search.'%')
+                    ->get();
+
+        return view('tenants.index', compact('tenants'));
     }
 }

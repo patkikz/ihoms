@@ -36,21 +36,22 @@
     </div>
     </section> --}}
 
-    <section class="section1">
+    <section class="section1 mt-5">
     <div class="container clearfix">
-        <div class="row">
-                <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
-                <h2>LIST OF EXECUTIVE OFFICERS and BOARD OF DIRECTORS</h2><br/>
+        <div class="row mx-atuo">
                 
-                <div class="col-xl-12 col-lg-12">
+                <div class="content col-lg-12 col-md-12 col-sm-12 col-12 clearfix">
+                <h2>LIST OF EXECUTIVE OFFICERS and BOARD OF DIRECTORS</h2><br/>
+                <div class="d-flex">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                     <div class="table-responsive">
-                        <table class="table table-condensed">
+                        <table class="table table-condensed table-bordered">
                             <thead class="thead-light">
                                 <tr>
                                     <th colspan="2">EXECUTIVE COMMITEE:</th>
                                 </tr>
                             </thead>
-                            <tr class="text-center">
+                            <tr>
                                 <th>
                                     <i>Position</i>
                                 </th>
@@ -58,7 +59,7 @@
                                     <i>Name</i>
                                 </th>
                             </tr>
-                            <tr class="text-center">
+                            <tr>
                                 <td>
                                     PRESIDENT
                                 </td>
@@ -66,7 +67,7 @@
                                     JEANA MACAUMA
                                 </td>
                             </tr>
-                            <tr class="text-center">
+                            <tr>
                                 <td>
                                     VICE PRESIDENT
                                 </td>
@@ -74,7 +75,7 @@
                                     DR. FRANCISCO ABALOS
                                 </td>
                             </tr>
-                            <tr class="text-center">
+                            <tr>
                                 <td>
                                     SECRETARY
                                 </td>
@@ -82,7 +83,7 @@
                                     JOAN T. VILLAS
                                 </td>
                             </tr>
-                            <tr class="text-center">
+                            <tr>
                                 <td>
                                     TREASURER
                                 </td>
@@ -90,7 +91,7 @@
                                     JENNIFER M. DELFINO
                                 </td>
                             </tr>
-                            <tr class="text-center">
+                            <tr>
                                 <td>
                                     AUDITOR
                                 </td>
@@ -101,9 +102,9 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-xl-12 col-lg-12">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                     <div class="table-responsive">
-                        <table class="table table-condensed">
+                        <table class="table table-condensed table-bordered">
                             <thead class="thead-light">
                                 <tr>
                                     <th colspan="2">BOARD OF DIRECTORS:</th>
@@ -192,7 +193,7 @@
                         </table>
                     </div>
                 </div>
-                
+                </div>
         </div>
     </div>
     </section>

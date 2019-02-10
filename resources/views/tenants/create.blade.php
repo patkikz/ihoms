@@ -5,6 +5,7 @@
 <div id="wrapper">
 
 @include('inc.sidebar')
+{!! Form::open(['action' => 'TenantsController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data']) !!}
 <div id="page-content-wrapper">
     <div class="container-fluid">
         {{-- @include('inc.search') --}}
@@ -29,7 +30,9 @@
                                         click here to browse
                                         </div>
                                     </div>
-                                    <output id="list"></output><input id="files" multiple name="files[]" type="file" />
+                                    <output id="list"></output>
+                                    {{Form::file('profile_image', ['id' => 'file'])}}
+                                    
                                     </div>
                                 </div>
                                 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -50,7 +53,7 @@
                     </div>
 
                     <div class="card-body">
-                            {!! Form::open(['action' => 'TenantsController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data']) !!}
+                           
                         
                             <div class="form-row mx-auto">
                                 <div class="col-12 col-md-12 col-lg-12 col-xl-12">
@@ -91,10 +94,10 @@
                                                 <label class="primary-color">Civil Status</label>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                <input class="form-control input-label rounded-0" type="text" placeholder="Gender" />
+                                                {{Form::select('gender', $genders ,null ,['placeholder' => 'Gender', 'class' => 'form-control input-label rounded-0'])}}
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                                <input class="form-control input-label rounded-0" type="text" placeholder="Civil Status" />
+                                                {{Form::select('civil_status', $civil_statuses ,null ,['placeholder' => 'Civil Status', 'class' => 'form-control input-label rounded-0'])}}
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +181,7 @@
                                 </div>
                             </div>
                             
-                        {!! Form::close() !!}
+                 
                     </div>
                 </div>
             </div>
@@ -188,6 +191,6 @@
 
 
     
-
+{!! Form::close() !!}
 </div>
 @endsection

@@ -1,4 +1,4 @@
-<div class="topbar clearfix">
+{{-- <div class="topbar clearfix">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-right">
@@ -12,9 +12,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#"><b>i</b><span>HOMS - SAN MARINO CLASSIC</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,8 +29,12 @@
                 <li class="{{Request::is('about') ? 'active' : ''}}">
                     <a class="nav-link" href="/about">About</a>
                 </li>
+                
                 <li class="{{Request::is('company') ? 'active' : ''}}">
                     <a class="nav-link" href="/company">Company</a>
+                </li>
+                <li class="{{Request::is('posts') ? 'active' : ''}}">
+                    <a href="/posts" class="nav-link">Events</a>
                 </li>
                 <li class="{{Request::is('contact') ? 'active' : ''}}">
                     <a class="nav-link" href="/contact">Contact</a>
@@ -53,12 +57,10 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             @can('isAdmin')
                                 <a href="/dashboard" class="dropdown-item">Dashboard</a>
-                                <a href="/posts" class="dropdown-item">Announcement</a>
                             @endcan  
                         
                         @can('isUser')
-                            <a href="/dashboard " class="dropdown-item">Dashboard</a>
-                            <a href="/posts" class="dropdown-item">Announcement</a>    
+                            <a href="/dashboard " class="dropdown-item">Dashboard</a>   
                         @endcan
                         
                             

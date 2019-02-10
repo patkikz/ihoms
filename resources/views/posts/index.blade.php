@@ -2,44 +2,35 @@
 
 @section('content')
 
-<div id="wrapper">
-
-    @include('inc.sidebar')
-
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
+<div class="container">
+    <div class="row pt-5 mt-5">
+        <div class="col-lg-12">
+            <div class="general-title text-center">
+                <h1>EVENTS</h1>
+                <hr>
+            </div>
             <div class="row">
-                <div class="col-xl-12 col-lg-12">
-                    @include('inc.search')
-
-                    <div class="general-title">
-                        <h3><i class="fa fa-bullhorn"></i> <span>ANNOUNCEMENT</span></h3>
-                    </div>
-                </div>
-
-                <div class="col-xl-12 col-lg-12">
-                    <div class="au-card au-card-padding rounded border-0">
-                        @if (count($posts) > 0)
-                            @foreach ($posts as $post)
-                                <div class="card bg-faded">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-4 col-md-4">
-                                                <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}" class="img-thumbnail">
-                                            </div>
-                                            <div class="col-sm-8 col-md-8">
-                                                <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
-                                                <small>Written on {{$post->created_at}} by <b>{{$post->user->name}} </b></small>
-                                            </div>
+                <div class="col-lg-12 col-xl-12">
+                    @if (count($posts) > 0)
+                    <div class="row">
+                        @foreach ($posts as $post)
+                            
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <img class="card-img-top" src="/storage/cover_images/{{$post->cover_image}}">
+                                        <div class="card-body">
+                                            <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
+                                            <small>Written on {{$post->created_at}} by <b>{{$post->user->name}} </b></small>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                            {{$posts->links()}}
-                        @else 
-                            <p>No post found</p>
-                        @endif
+                            
+                        @endforeach
+                        {{$posts->links()}}
                     </div>
+                    @else 
+                        <p>No post found</p>
+                    @endif
                 </div>
             </div>
         </div>

@@ -21,4 +21,8 @@ class DueTransaction extends Model
     public function arrear(){
         return $this->hasOne(Arrear::class);
     }
+
+    public function months(){
+        return $this->belongsTo(Month::class, 'month');
+    }
 }

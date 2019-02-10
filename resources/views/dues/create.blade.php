@@ -3,7 +3,7 @@
 @section('content')
 
 <div id="wrapper">
-
+        {!! Form::open(['action' => 'DuesController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'id' => 'getHere']) !!}
     @include('inc.sidebar')
 
     <div id="page-content-wrapper">
@@ -31,7 +31,7 @@
                             HOMEOWNER
                         </div>
                         <div class="card-body">
-                            {!! Form::open(['action' => 'DuesController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'id' => 'getHere']) !!}
+                           
                             {{Form::hidden('domain', '', ['id' => 'domain'])}}
                             @foreach ($payment as $p)
                                 
@@ -221,12 +221,12 @@
                                     </div>
                                 </div>
                             </div>
+                         
                         </div>
                     </div>
             </div>
             {!! Form::close() !!}
         </div>
-    </div>
     
 @endsection
 
@@ -238,7 +238,7 @@
         
         }
 
-var domain = $('#domain').val();
+var domain = $('#domain').val();    
 var getTenantTransactions = function(id){
 var tb = " ";
 $.ajax({

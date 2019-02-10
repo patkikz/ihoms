@@ -19,6 +19,6 @@ class CheckUserRole
         {
             return $next($request);
         }
-            return redirect('dashboard')->with('errors', 'You do not have access on this page');
+            return redirect('dashboard')->with('error', 'You do not have access on this page');
     }
 }

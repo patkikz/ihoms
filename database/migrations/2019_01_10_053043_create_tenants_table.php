@@ -16,9 +16,12 @@ class CreateTenantsTable extends Migration
         Schema::create('tenants', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email')->unique();
+            $table->string('profile_image');
             $table->string('last_name');
             $table->string('first_name');
             $table->string('middle_name');
+            $table->unsignedInteger('gender');
+            $table->unsignedInteger('civil_status');
             $table->date('birth_date');
             $table->unsignedInteger('birth_place');
             $table->unsignedInteger('province');
@@ -31,6 +34,7 @@ class CreateTenantsTable extends Migration
             $table->unsignedInteger('owner_id');
 
             $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+    
            
         });
     }

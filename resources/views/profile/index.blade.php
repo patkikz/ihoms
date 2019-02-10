@@ -10,8 +10,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
-                    <h1>Personal Information</h1>
                     @foreach ($user as $u)
+                    <img style="width:40%" src="/storage/profile_images/{{$u->profile_image}}" class="img-thumbnail float-left">
+                    <h1>Personal Information</h1>
                     <b>Last Name:</b>   {{$u->last_name}} <br>
                     <b>First Name:</b>  {{$u->first_name}} <br>
                     <b>Middle Name:</b> {{$u->middle_name}} <br>
@@ -25,8 +26,9 @@
                     <h1>Account Information</h1>
                     <b>Email:</b>    {{$u->user->email}} <br>
                     <b>User Type:</b>
+                    
                     @if ($u->isAdmin != 1)
-                        User
+                        Homeowner
                     @else
                         Admin
                     @endif

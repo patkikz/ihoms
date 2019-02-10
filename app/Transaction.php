@@ -9,6 +9,8 @@ class Transaction extends Model
     protected $fillable = [
         'cashier', 'amount' , 'tenant_id' , 'amount' , 'transactionFor'
     ];
+
+    protected $dates = ['created_at'];
     public function tenants()
     {
         return $this->belongsTo(Tenant::class, 'tenant_id');

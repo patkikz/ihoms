@@ -21,4 +21,8 @@ class ArrearTransaction extends Model
     {
         return $this->belongsTo(ArrearPayment::class, 'arrear_payment_id');
     }
+
+    public function months(){
+        return $this->belongsTo(Month::class, 'month');
+    }
 }

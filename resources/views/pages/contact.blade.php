@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="section1">
+<section class="section1 mt-5">
     <div class="container clearfix">
         <div class="row">
             <div class="content col-lg-12 col-md-12 col-sm-12 clearfix my-4">
@@ -38,11 +38,11 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <h4 class="title">Contact Details</h4>
                         <hr>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <img src="/img/all-blue.png" class="img-fluid mb-3" />
                         <ul class="contact_details">
                         <li><i class="fa fa-envelope-o"></i> inquiry@ihoms.com</li>
                             <li><i class="fa fa-phone-square"></i> +63 1234567890</li>
-                            <li><i class="fa fa-home"></i> 123 Fake st. Cavite City</li>
+                            <li><i class="fa fa-home"></i> San Marino Classic Subdivision, Snake Road, Salawag, Dasmariñas, Cavite</li>
                         </ul>
                     </div>
             
