@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="py-4 mt-4 clearfix"></div>
+
 <section class="section1">
     <div class="container clearfix my-4">
         <div class="row">

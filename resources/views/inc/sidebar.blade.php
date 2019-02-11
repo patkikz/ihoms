@@ -9,6 +9,7 @@
         @can('isAdmin')
             <li class="list-a"><a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
             <li class="list-a"><a href="/tenants"><i class="fas fa-users"></i> HO Masterfile</a></li>
+            <li class="list-a"><a href="/board-resolutions/create"><i class="fas fa-file"></i> Board Resolutions</a></li>
             <li class="list-a">
                 <a href="#" class="pt-2 pb-2" style="color: #444444;">Payment Management</a>
                 <div class="dropdown-container">

@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div id="wrapper">
 
     @include('inc.sidebar')
@@ -50,7 +51,9 @@
                                         </td>
                                     </tr>
                                     @endforeach
+                                   
                                 </table>
+                                {{$tenants->links()}}
                             @else
                                 <em>You have no post yet. Create a post now!</em>
                             @endif

@@ -80,7 +80,7 @@
                                                     {{Form::text('first_name', '', ['class' => ($errors->has('first_name')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'First Name'])}}
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                                                    {{Form::text('middle_name', '', ['class' => ($errors->has('middle_name')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Middle Initial'])}}
+                                                    {{Form::text('middle_name', '', ['class' => ($errors->has('middle_name')) ? 'form-control form-control-sm is-invalid' : 'form-control form-control-sm input-label rounded-0', 'placeholder' => 'Middle Initial', 'maxlength' => 1])}}
                                             </div>
                                         </div>
                                     </div>

@@ -2,11 +2,13 @@
 
 @section('content')
 
+<div class="clearfix py-2"></div>
+
 <div class="container">
-    <div class="row pt-5 mt-5">
+    <div class="row py-5 my-5">
         <div class="col-lg-12">
             <div class="general-title text-center">
-                <h1>EVENTS</h1>
+                <h1 class="title">LATEST EVENTS</h1>
                 <hr>
             </div>
             <div class="row">
@@ -36,5 +38,7 @@
         </div>
     </div>
 </div>
+
+@include('inc.footer')
     
 @endsection

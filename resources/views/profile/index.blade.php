@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="clearfix py-2"></div>
+
 <div id="wrapper">
 
     @include('inc.sidebar')

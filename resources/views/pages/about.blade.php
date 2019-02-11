@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="py-4 mt-4 clearfix"></div>
 <section class="section1 mt-5">
         <div class="container clearfix">
                 <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
                 <div class="general-title text-center">
-                <h3>ABOUT OUR COMPANY</h3>
-                <p>Learn more about us</p>
+                <h1 class="title">ABOUT OUR COMPANY</h1>
+                <h6>Learn more about us</h6>
                 <hr>
                 </div>
                 <div class="divider"></div>
@@ -161,22 +162,6 @@
             
         </div>
     </section>
-
-        <section class="section3">
-        <div class="container withpadding">
-                <div class="message">
-                <div class="row">
-                        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
-                        <h3>FUNDAMENTAL ELEMENTS</h3>
-                        <p>Strategic Partnership, Community Alignment, BOD & HOA Officers Engagement, Dynamic Processes, Responsible Governance, Social Responsibility</p>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                        <a class="dmbutton button large pull-right primary-bg" href="/company"> View More</a>
-                        </div>
-                </div>
-                </div>
-        </div>
-        </section>
 
 @include('inc.footer')
 

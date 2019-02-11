@@ -36,12 +36,14 @@
     </div>
     </section> --}}
 
+    <div class="py-4 mt-4 clearfix"></div>
+
     <section class="section1 mt-5">
     <div class="container clearfix">
         <div class="row mx-atuo">
                 
                 <div class="content col-lg-12 col-md-12 col-sm-12 col-12 clearfix">
-                <h2>LIST OF EXECUTIVE OFFICERS and BOARD OF DIRECTORS</h2><br/>
+                <h2 class="" style="color: #3498DB; font-weight: 700;">LIST OF EXECUTIVE OFFICERS and BOARD OF DIRECTORS</h2><br/>
                 <div class="d-flex">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                     <div class="table-responsive">

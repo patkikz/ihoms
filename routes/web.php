@@ -69,6 +69,7 @@ Route::resource('history', 'TransactionHistoriesController')->middleware('auth')
 Route::get('/reports/member-dues', 'ReportsController@memberDues');
 Route::get('reports/member-dues/pdf', 'ReportsController@pdf');
 
+Route::resource('board-resolutions','BoardResolutionsController');
 // Route::get('/home', 'HomeController@index')->name('dashboard')->middleware('verified');
 
 // Route::resource('admin/posts', 'Admin\\PostsController');

@@ -36,7 +36,7 @@ class TenantsController extends Controller
     public function index()
     {
         
-        $tenants = Tenant::where('owner_id', auth()->id())->get();
+        $tenants = Tenant::where('owner_id', auth()->id())->orderBy('created_at', 'desc')->paginate(5);
 
         return view('tenants.index')->with('tenants', $tenants);
     }
@@ -88,13 +88,13 @@ class TenantsController extends Controller
         }
         else
         {
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'noprofile.jpg';
         }
     
         $request = request()->validate(
             [
                 'email' => 'required',
-                'profile_image' => 'required|image|nullable|max:1999',
+                'profile_image' => '|image|nullable|max:1999',
                 'last_name' => 'required',
                 'first_name' => 'required',
                 'middle_name' => 'required',

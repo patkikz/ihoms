@@ -2,13 +2,15 @@
 
 @section('content')
 
+<div class="py-2 mt-2 clearfix"></div>
+
 <section class="section1 mt-5">
     <div class="container clearfix">
         <div class="row">
             <div class="content col-lg-12 col-md-12 col-sm-12 clearfix my-4">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
-                        <h4 class="title">Contact Form</h4>
+                    <div class="col-lg-6 col-md-6 col-sm-6 mb-5 offset-lg-3">
+                        <h4 class="title text-center">Contact Form</h4>
                         <hr>
                         <div id="message"></div>
                         <form class="contact-form php-mail-form" role="form" action="contactform/contactform.php" method="POST">
@@ -33,17 +35,6 @@
             
                         </form>
                         <hr>
-                    </div>
-            
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <h4 class="title">Contact Details</h4>
-                        <hr>
-                        <img src="/img/all-blue.png" class="img-fluid mb-3" />
-                        <ul class="contact_details">
-                        <li><i class="fa fa-envelope-o"></i> inquiry@ihoms.com</li>
-                            <li><i class="fa fa-phone-square"></i> +63 1234567890</li>
-                            <li><i class="fa fa-home"></i> San Marino Classic Subdivision, Snake Road, Salawag, Dasmariñas, Cavite</li>
-                        </ul>
                     </div>
             
                     <div class="clearfix"></div>
