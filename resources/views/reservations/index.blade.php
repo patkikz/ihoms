@@ -142,7 +142,7 @@
                                                     
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                             <div class="form-group">
                                                 <button input="button" class="btn btn-primary primary-bg rounded-0 btn-block" id="btnshowmodal" onclick="popupReservation();return false;" runat="server">VIEW SCHEDULES</button>
                                         
@@ -186,10 +186,10 @@
                                                     </div>
                                                     <div class="d-flex w-100 justify-content-end mt-3">
                                                         <div class="form-group pr-2 pl-2">
-                                                            {{Form::submit('Submit', ['class' => 'button primary-bg rounded-0'])}}
+                                                            {{Form::submit('SUBMIT', ['class' => 'btn btn-primary primary-bg rounded-0'])}}
                                                         </div>
                                                         <div class="form-group pr-2 pl-2">
-                                                            <button type="button" class="button primary-bg rounded-0" data-dismiss="modal">CANCEL</button>
+                                                            <button type="button" class="btn btn-primary primary-bg rounded-0" data-dismiss="modal">CANCEL</button>
                                                         </div>
                                                     </div>
                                                 </div>

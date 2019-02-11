@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
-                    <header class="mb-2 row justify-center">
+                    {{-- <header class="mb-2 row justify-center">
                         <div class="col-3 col-sm-2 col-md-6 col-lg-6 col-xl-6" >
                             <div class="float-left text-center text-md-left input-group">
                                 <a href="#menu-toggle" class="btn btn-primary rounded-0 primary-bg" id="menu-toggle"><i class="fa fa-bars"></i></a>
@@ -25,16 +25,13 @@
                                 </span>
                             </div>
                         </div>
-                    </header>
+                    </header> --}}
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header pb-0">
-                                    <div class="d-flex">
-                                        @include('inc.back')
-                                        <h2> Create Post</h2>
-                                    </div>
+                            <div class="card rounded-0">
+                                <div class="card-header">
+                                    Create Post
                                 </div>
                                 <div class="card-body">
                                     {!! Form::open(['action' => 'PostsController@store', 'method' => 'POST' , 'enctype' => 'multipart/form-data', 'class' => 'box']) !!}

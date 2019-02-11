@@ -10,7 +10,7 @@
             <div class="content col-lg-12 col-md-12 col-sm-12 clearfix my-4">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 mb-5 offset-lg-3">
-                        <h4 class="title text-center">Contact Form</h4>
+                        <h4 class="title text-center">CONTACT FORM</h4>
                         <hr>
                         <div id="message"></div>
                         <form class="contact-form php-mail-form" role="form" action="contactform/contactform.php" method="POST">

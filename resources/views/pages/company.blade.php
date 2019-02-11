@@ -36,7 +36,7 @@
     </div>
     </section> --}}
 
-    <div class="py-4 mt-4 clearfix"></div>
+    <div class="py-3 mt-3 clearfix"></div>
 
     <section class="section1 mt-5">
     <div class="container clearfix">

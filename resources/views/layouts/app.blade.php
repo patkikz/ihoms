@@ -29,7 +29,7 @@
             @include('inc.navbar')
 
             @include('inc.messages')
-            <div class="clearfix py-2"></div>
+            <div class="clearfix py-3"></div>
             @yield('content')
             
             @yield('scripts')

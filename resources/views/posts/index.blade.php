@@ -2,8 +2,6 @@
 
 @section('content')
 
-<div class="clearfix py-2"></div>
-
 <div class="container">
     <div class="row py-5 my-5">
         <div class="col-lg-12">

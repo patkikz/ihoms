@@ -1,17 +1,17 @@
 <!-- Sidebar -->
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
-        <li class="sidebar-brand">
+        {{-- <li class="sidebar-brand">
             <a href="/">
                 <img class="img-fluid ewanko" src="{{ asset('img/all-blue.png') }}">
             </a>
-        </li>
+        </li> --}}
         @can('isAdmin')
             <li class="list-a"><a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
             <li class="list-a"><a href="/tenants"><i class="fas fa-users"></i> HO Masterfile</a></li>
             <li class="list-a"><a href="/board-resolutions/create"><i class="fas fa-file"></i> Board Resolutions</a></li>
             <li class="list-a">
-                <a href="#" class="pt-2 pb-2" style="color: #444444;">Payment Management</a>
+                <a href="#" style="color: #444444;">Payment Management</a>
                 <div class="dropdown-container">
                     <a href="/dues"><i class="fas fa-calendar-alt"></i> Monthly Dues</a>
                     <a href="/car-stickers"><i class="fas fa-car"></i> Car Stickers</a>
@@ -20,22 +20,20 @@
                 </div>
             </li>
             <li class="list-a">
-                    <a href="#" class="pt-2 pb-2" style="color: #444444;">Reports</a>
                     <div class="list-a2">
                         <a href="/reports/member-dues"><i class="fas fa-file"></i> Member Dues</a>
                     </div>
                 </li>
-            <li class="list-a"><a href="/expenses"><i class="fas fa-sticky-note"></i> Expenses</a></li>
-            <li class="list-a">
-                <a href="#" class="pt-2 pb-2" style="color: #444444;">File Management</a>
-                <div class="list-a">
+            <li class="list-a2"><a href="/expenses"><i class="fas fa-sticky-note"></i> Expenses</a></li>
+            <li class="list-a2">
+                <a href="#" style="color: #444444;">File Management</a>
+                <div class="list-a2">
                     <a href="/purposes"><i class="fas fa-edit"></i>Expenses Purposes</a>
                 </div>
                 {{-- <div class="list-a">
                     <a href="/purposes"><i class="fas fa-edit"></i>Expenses Purposes</a>
                 </div> --}}
             </li>
-            <li class="list-a"><a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
         @endcan
 
         @can('isUser')

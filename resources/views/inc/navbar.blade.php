@@ -15,8 +15,8 @@
 </div> --}}
 
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a href="#" class="navbar-brand">iHOMES-<span style="color: orange;">SMC</span></a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="border-bottom: 1px solid #E7E7E7;">
+        <a href="#" class="navbar-brand"><img src="/img/iHOMS-Logo2.png" style="width: 12rem;" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

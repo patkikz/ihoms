@@ -7,7 +7,6 @@
 <div id="wrapper">
 
     @include('inc.sidebar')
-    <div class="py-2 mt-2 clearfix"></div>
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <div class="row">

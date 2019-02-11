@@ -188,10 +188,10 @@
                                                             </div>
                                                             <div class="d-flex w-100 justify-content-end mt-3">
                                                                 <div class="form-group pr-2 pl-2">
-                                                                    {{Form::submit('Submit', ['class' => 'button primary-bg rounded-0'])}}
+                                                                    {{Form::submit('SUBMIT', ['class' => 'btn btn-primary primary-bg rounded-0'])}}
                                                                 </div>
                                                                 <div class="form-group pr-2 pl-2">
-                                                                    <button type="button" class="button primary-bg rounded-0" data-dismiss="modal">CANCEL</button>
+                                                                    <button type="button" class="btn btn-primary primary-bg rounded-0" data-dismiss="modal">CANCEL</button>
                                                                 </div>
                                                             </div>
                                                         </div>
