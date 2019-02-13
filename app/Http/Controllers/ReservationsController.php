@@ -32,8 +32,10 @@ class ReservationsController extends Controller
             $latest = Transaction::latest()->first();
         }
 
+        $reservations = ReservationTransaction::all();
+
         $types = ReservationType::pluck('reservation_type', 'id');
-        return view('reservations.index', compact('types', 'latest'));
+        return view('reservations.index', compact('types', 'latest', 'reservations'));
     }
 
     /**
@@ -65,7 +67,7 @@ class ReservationsController extends Controller
             'amount' => 'required',
             'reservation_type' => 'required',
         ]);
-
+            
         $id = Reservation::create($request)->id;
 
         ReservationTransaction::create([

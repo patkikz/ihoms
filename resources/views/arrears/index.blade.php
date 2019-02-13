@@ -190,7 +190,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content rounded-0 border-0">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Arrear Payment</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Arrears Payment</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>

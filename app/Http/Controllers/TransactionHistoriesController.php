@@ -17,7 +17,7 @@ class TransactionHistoriesController extends Controller
      */
     public function index()
     {
-        $id = auth()->id() - 1 ;
+        $id = auth()->user()->tenant_id ;
 
         $dues = DueTransaction::where('tenant_id', $id)
                 // ->join('months', 'months.id', 'due_transactions.month')

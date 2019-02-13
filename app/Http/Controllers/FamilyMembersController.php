@@ -15,7 +15,7 @@ class FamilyMembersController extends Controller
      */
     public function index()
     {
-        $id = auth()->id() - 1;
+        $id = auth()->user()->tenant_id ;
         $familyMembers =  FamilyMember::where('tenant_id', $id)->get();
 
     

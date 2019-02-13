@@ -16,7 +16,7 @@ class ProfilesController extends Controller
      */
     public function index()
     {
-        $id = auth()->user()->id - 1;
+        $id = auth()->user()->tenant_id;
         $user = Tenant::with('user')
         ->where('id', $id)
         ->get();

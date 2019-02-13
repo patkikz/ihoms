@@ -31,6 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $dates = ['email_verified_at'];
+    
     public function posts()
     {
         return $this->hasMany(Post::class);

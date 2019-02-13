@@ -158,7 +158,7 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content rounded-0 border-0">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Monthly Dues</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Clubhouse Reservation</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                             </button>
@@ -208,7 +208,29 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    
+                                    @if (count($reservations) > 0)
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>Reserved By</th>
+                                                <th>Reservation Type</th>
+                                                <th>Reserved Date</th>
+                                                <th>Start Time</th>
+                                                <th>End Time</th>
+                                            </tr>
+                                            @foreach ($reservations as $r)
+                                            <tr>
+                                                <td>{{$r->tenants->first_name . " " .$r->tenants->last_name}}</td>
+                                                <td>{{$r->reservationType->reservation_type}}</td>
+                                                <td>{{$r->reservations->reserved_date->format('F d, Y')}}</td>
+                                                <td>{{Carbon\Carbon::parse($r->reservations->start_time)->format('g:i a')}}</td>
+                                                <td>{{Carbon\Carbon::parse($r->reservations->end_time)->format('g:i a')}}</td>    
+                                            </tr>   
+                                            @endforeach
+                                        </table>
+                                        
+                                    @else
+                                     <em>No Schedules yet!</em>    
+                                    @endif
                                 </div>
                             </div>
                         </div>

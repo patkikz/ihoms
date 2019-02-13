@@ -18,4 +18,9 @@ class ReservationTransaction extends Model
     {
         return $this->belongsTo(Tenant::class, 'tenant_id');
     }
+
+    public function reservations()
+    {
+        return $this->belongsTo(Reservation::class, 'reservation_id');
+    }
 }
