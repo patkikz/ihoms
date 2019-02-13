@@ -16,6 +16,10 @@ use Alert;
 
 class DuesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +50,7 @@ class DuesController extends Controller
             $latest = Transaction::latest()->first();
         }
 
-        $payment = PaymentManagement::where('id', 1)->get();
+        $payment = PaymentManagement::where('payment_for', 'dues')->get();
         // $transactions = DueTransaction::where('tenant_id', 'id')->get();
         $months = DB::table('months')->pluck('name','id');
         $tenants = Tenant::pluck('id', 'id');

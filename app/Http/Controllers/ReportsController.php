@@ -12,6 +12,11 @@ use PdfReport;
 
 class ReportsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function memberDues()
     {
         $dues_data = $this->get_dues_data();

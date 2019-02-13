@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
+    <ul class="sidebar-nav pb-4 mb-5">
         {{-- <li class="sidebar-brand">
             <a href="/">
                 <img class="img-fluid ewanko" src="{{ asset('img/all-blue.png') }}">
@@ -28,7 +28,15 @@
             <li class="list-a2">
                 <a href="#" style="color: #444444;">File Management</a>
                 <div class="list-a2">
-                    <a href="/purposes"><i class="fas fa-edit"></i>Expenses Purposes</a>
+                    <a href="/purposes"><i class="fas fa-edit"></i>Expenses Managament</a>
+
+                    <a href="/payment-managements"><i class="fas fa-edit"></i>Payments Management</a>
+                    
+                    <a href="/relationships"><i class="fas fa-edit"></i>Relationships Management</a>
+
+                    <a href="/reservation-types"><i class="fas fa-edit"></i>Reservation Types</a>
+                    
+                    <a href="/vehicle-types"><i class="fas fa-edit"></i>Vehicle Types Managament</a>
                 </div>
                 {{-- <div class="list-a">
                     <a href="/purposes"><i class="fas fa-edit"></i>Expenses Purposes</a>

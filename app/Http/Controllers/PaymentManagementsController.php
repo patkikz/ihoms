@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\VehicleType;
+use App\PaymentManagement;
 use Illuminate\Http\Request;
 
-class VehicleTypesController extends Controller
+class PaymentManagementsController extends Controller
 {
     public function __construct()
     {
@@ -18,9 +18,9 @@ class VehicleTypesController extends Controller
      */
     public function index()
     {
-        $types = VehicleType::all();
-        
-        return view('vehicle-types.index', compact('types'));
+        $paymentManagements = PaymentManagement::all();
+
+        return view('payment-managements.index', compact('paymentManagements'));
     }
 
     /**
@@ -30,7 +30,7 @@ class VehicleTypesController extends Controller
      */
     public function create()
     {
-        return view('vehicle-types.create');
+        return view('payment-managements.create');
     }
 
     /**
@@ -42,56 +42,54 @@ class VehicleTypesController extends Controller
     public function store(Request $request)
     {
         $request = request()->validate([
-            'vehicle_type' => 'required',
+            'payment_for' => 'required',
             'amount' => 'required'
         ]);
 
-        VehicleType::create($request);
+        PaymentManagement::create($request);
 
-        return redirect('vehicle-types')->withSuccess('Vehicle Type Added Successfully');
-    
+        return redirect('/payment-managements')->withSuccess('New Payment Added!');
     }
-
 
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\VehicleType  $vehicleType
+     * @param  \App\PaymentManagement  $paymentManagement
      * @return \Illuminate\Http\Response
      */
-    public function edit(VehicleType $vehicleType)
+    public function edit(PaymentManagement $paymentManagement)
     {
-        return view('vehicle-types.edit' , compact('vehicleType'));
+        return view('payment-managements.edit', compact('paymentManagement'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\VehicleType  $vehicleType
+     * @param  \App\PaymentManagement  $paymentManagement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, VehicleType $vehicleType)
+    public function update(Request $request, PaymentManagement $paymentManagement)
     {
-        $vehicleType->update(request()->validate([
-            'vehicle_type' => 'required',
+        $paymentManagement->update(request()->validate([
+            'payment_for' => 'required',
             'amount' => 'required'
         ]));
 
-        return redirect('vehicle-types')->withSucess('Vehicle Type Updated Successfully');
+        return redirect('payment-managements')->withSuccess('Updated Successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\VehicleType  $vehicleType
+     * @param  \App\PaymentManagement  $paymentManagement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(VehicleType $vehicleType)
+    public function destroy(PaymentManagement $paymentManagement)
     {
-        $vehicleType->delete();
+        $paymentManagement->delete();
 
-        return redirect('vehicle-types')->withSuccess('Deleted Successfully!');
+        return redirect('payment-managements')->withSuccess('Deleted Successfully!');
     }
 }

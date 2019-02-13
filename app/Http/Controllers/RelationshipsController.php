@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class RelationshipsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,8 @@ class RelationshipsController extends Controller
      */
     public function index()
     {
-        //
+        $relationships = Relationship::all();
+        return view('relationships.index', compact('relationships'));
     }
 
     /**
@@ -24,7 +29,7 @@ class RelationshipsController extends Controller
      */
     public function create()
     {
-        //
+        return view('relationships.create');
     }
 
     /**
@@ -35,18 +40,13 @@ class RelationshipsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request = request()->validate([
+            'relationship_name' => 'required'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Relationship  $relationship
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Relationship $relationship)
-    {
-        //
+        Relationship::create($request);
+
+        return redirect('relationships')->withSuccess('Relationship Added Successfully!');
     }
 
     /**
@@ -57,7 +57,7 @@ class RelationshipsController extends Controller
      */
     public function edit(Relationship $relationship)
     {
-        //
+        return view('relationships.edit', compact('relationship'));
     }
 
     /**
@@ -69,7 +69,11 @@ class RelationshipsController extends Controller
      */
     public function update(Request $request, Relationship $relationship)
     {
-        //
+        $relationship->update(request()->validate([
+                'relationship_name' => 'required'
+        ]));
+
+        return redirect('relationships')->withSuccess('Updated Successfully!');
     }
 
     /**
@@ -80,6 +84,8 @@ class RelationshipsController extends Controller
      */
     public function destroy(Relationship $relationship)
     {
-        //
+        $relationship->delete();
+
+        return redirect('relationships')->withSuccess('Deleted Successfully!');
     }
 }
