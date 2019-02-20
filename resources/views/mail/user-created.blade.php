@@ -6,7 +6,7 @@ You're now part of a community that cares for the things that really matters to 
 You can now access our website by clicking the button below:
 
 
-@component('mail::button', ['url' => url('password/reset')])
+@component('mail::button', ['url' => url('/password/reset')])
 Reset Password Here
 @endcomponent
 

@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <div id="sidebar-wrapper">
-    <ul class="sidebar-nav pb-4 mb-5">
+    <ul class="sidebar-nav">
         {{-- <li class="sidebar-brand">
             <a href="/">
                 <img class="img-fluid ewanko" src="{{ asset('img/all-blue.png') }}">
@@ -10,38 +10,19 @@
             <li class="list-a"><a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
             <li class="list-a"><a href="/tenants"><i class="fas fa-users"></i> HO Masterfile</a></li>
             <li class="list-a"><a href="/board-resolutions/create"><i class="fas fa-file"></i> Board Resolutions</a></li>
-            <li class="list-a">
-                <a href="#" style="color: #444444;">Payment Management</a>
-                <div class="dropdown-container">
-                    <a href="/dues"><i class="fas fa-calendar-alt"></i> Monthly Dues</a>
-                    <a href="/car-stickers"><i class="fas fa-car"></i> Car Stickers</a>
-                    <a href="/reservations"><i class="fas fa-home"></i> Club House Reservation</a>
-                    <a href="/arrears"><i class="fas fa-money-bill"></i> Arrears</a>
-                </div>
-            </li>
-            <li class="list-a">
-                    <div class="list-a2">
-                        <a href="/reports/member-dues"><i class="fas fa-file"></i> Member Dues</a>
-                    </div>
-                </li>
-            <li class="list-a2"><a href="/expenses"><i class="fas fa-sticky-note"></i> Expenses</a></li>
-            <li class="list-a2">
-                <a href="#" style="color: #444444;">File Management</a>
-                <div class="list-a2">
-                    <a href="/purposes"><i class="fas fa-edit"></i>Expenses Managament</a>
+            <li class="list-a"><a href="/dues"><i class="fas fa-calendar-alt"></i> Monthly Dues</a></li>
+            <li class="list-a"><a href="/car-stickers"><i class="fas fa-car"></i> Car Stickers</a></li>
+            <li class="list-a"><a href="/reservations"><i class="fas fa-home"></i> Club House Reservation</a></li>
+            <li class="list-a"><a href="/arrears"><i class="fas fa-money-bill"></i> Arrears</a></li>
+            <li class="list-a"><a href="/reports/member-dues"><i class="fas fa-file"></i> Member Dues</a></li>
+            <li class="list-a"><a href="/expenses"><i class="fas fa-sticky-note"></i> Expenses</a></li>
+            <li class="list-a"><a href="/purposes"><i class="fas fa-edit"></i> Expenses Managament</a></li>
+            <li class="list-a"><a href="/payment-managements"><i class="fas fa-credit-card"></i> Payments Management</a></li>
+            <li class="list-a"><a href="/relationships"><i class="fas fa-heart"></i> Relationships Management</a></li>
+            <li class="list-a"><a href="/reservation-types"><i class="fas fa-calendar-plus"></i> Reservation Types</a></li>
+            <li class="list-a"><a href="/vehicle-types"><i class="fas fa-truck"></i> Vehicle Types Managament</a></li>
+            
 
-                    <a href="/payment-managements"><i class="fas fa-edit"></i>Payments Management</a>
-                    
-                    <a href="/relationships"><i class="fas fa-edit"></i>Relationships Management</a>
-
-                    <a href="/reservation-types"><i class="fas fa-edit"></i>Reservation Types</a>
-                    
-                    <a href="/vehicle-types"><i class="fas fa-edit"></i>Vehicle Types Managament</a>
-                </div>
-                {{-- <div class="list-a">
-                    <a href="/purposes"><i class="fas fa-edit"></i>Expenses Purposes</a>
-                </div> --}}
-            </li>
         @endcan
 
         @can('isUser')

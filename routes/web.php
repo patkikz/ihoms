@@ -77,7 +77,7 @@ Route::resource('reservation-types', 'ReservationTypesController')->middleware('
 
 Route::resource('relationships', 'RelationshipsController')->middleware('checkuserrole');
 
-Route::resource('vehicle-types', 'VehicleTypesController');
+Route::resource('vehicle-types', 'VehicleTypesController')->middleware('checkuserrole');
 // Route::get('/home', 'HomeController@index')->name('dashboard')->middleware('verified');
 
 // Route::resource('admin/posts', 'Admin\\PostsController');
